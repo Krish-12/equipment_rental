@@ -1,144 +1,83 @@
-	
-		<!-- Begin template wrapper -->
-		<div id="wrapper" class="hasbg transparent">
-			<div class="header_style_wrapper">
-				<!-- Begin top bar -->
-				<div class="above_top_bar">
-					<div class="page_content_wrapper">
-						<div class="social_wrapper">
-							<ul>
-								<li class="facebook">
-									<a target="_blank" href="#">
-										<i class="fa fa-facebook-official"></i>
-									</a>
-								</li>
-								<li class="twitter">
-									<a target="_blank" href="http://twitter.com/#">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-								<li class="youtube">
-									<a target="_blank" title="Youtube" href="#">
-										<i class="fa fa-youtube"></i>
-									</a>
-								</li>
-								<li class="pinterest">
-									<a target="_blank" title="Pinterest" href="http://pinterest.com/#">
-										<i class="fa fa-pinterest"></i>
-									</a>
-								</li>
-								<li class="instagram">
-									<a target="_blank" title="Instagram" href="http://instagram.com/">
-										<i class="fa fa-instagram"></i>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div class="top_contact_info">
-							<div class="company_address">
-								<div id="top_contact_address">
-									<span class="ti-location-pin"></span>184 Main Street East 8007
-								</div>
-							</div>
-							<div>
-								<div id="top_contact_number">
-									<a href="tel:1.800.456.6743">
-										<span class="ti-mobile"></span>1.800.456.6743
-									</a>
-								</div>
-							</div>
-							<div>
-								<div id="top_contact_hours">
-									<span class="ti-alarm-clock"></span>Mon-Fri 09.00 - 17.00
-								</div>
-							</div>
-						</div>
-						<br class="clear"/>
-					</div>
-				</div>
-				<!-- End top bar -->
-				<div class="top_bar hasbg">
-					<div class="standard_wrapper">
-						<!-- Begin logo -->
-						<div id="logo_wrapper">
-							<div id="logo_normal" class="logo_container">
-								<div class="logo_align">
-								<p style="font-size:40px";>LOGO</p>
-									<!--<a id="custom_logo" class="logo_wrapper hidden" href="">
-										<img src="images/logo@2x_white.png" alt="" width="175" height="24"/>
-									</a>
-								</div>
-							</div>
-							<div id="logo_transparent" class="logo_container">
-								<div class="logo_align">
-									<a id="custom_logo_transparent" class="logo_wrapper default" href="">
-										<img src="images/logo@2x_white.png" alt="" width="175" height="24"/>
-									</a>-->
-								</div>
-							</div>
-							<!-- End logo -->
-							<div id="menu_wrapper">
-								<div id="nav_wrapper">
-									<div class="nav_wrapper_inner">
-										<div id="menu_border_wrapper">
-											<div class="menu-main-menu-container">
-												<ul id="main_menu" class="nav">
-													<li class="">
-														<a href="index.php">Home</a>														
-													</li>
-													<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children arrow menu-item-8">
-														<a href="#">Renters</a>														
-														<ul  class="sub-menu">
-															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-134">
-																<a href="signup.php">Sign Up</a>
-															</li>
-															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-162">
-																<a href="contact.php">Contact Us</a>
-															</li>
-															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-158">
-																<a href="about.php">About Us</a>
-															</li>															
-														</ul>
-													</li>
-
-
-													<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children arrow menu-item-9">
-														<a href="#">Suppliers</a>
-														<ul  class="sub-menu">
-															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-134">
-																<a href="signup.php">Sign Up</a>
-															</li>
-															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-162">
-																<a href="contact.php">Contact Us</a>
-															</li>
-															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-158">
-																<a href="about.php">About Us</a>
-															</li>															
-														</ul>
-													</li>
-													<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-10">
-														<a href="login.php">Login</a>														
-													</li>
-													
-														</ul>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- Begin right corner buttons -->
-									<div id="logo_right_button">										
-										<div class="header_cart_wrapper">
-											<a href="cart.php" title="View Cart">
-												<span class="ti-shopping-cart"></span>
-											</a>
-										</div>
-									</div>
-									<!-- End right corner buttons -->
-								</div>
-								<!-- End main nav -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <!--<div class="page-logo">
+                    <a href="dashboard.php" style="text-decoration:none">
+                       <img src="images/logo.png" style="height:30px;width:150px;margin-top:8px;">
+					</a>
+                    <div class="menu-toggler sidebar-toggler"> </div>
+                </div>-->
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+						<!-- BEGIN INBOX DROPDOWN -->
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                       <!-- <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <i class="icon-envelope-open"></i>
+								
+                                <span class="badge badge-default"> 2 </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="external">
+                                    <h3>You have
+                                    <span class="bold">2 New</span> Messages</h3>
+                                    <a href="message.php">view all</a>
+                                </li>
+                                <li>
+                                    <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+										
+                                        <li>
+                                            <a href="message_details.php?id=1&read=2">
+                                                <span class="subject" style="margin-left:0px">
+                                                    <span class="from"> das</span>
+                                                    <span class="time">13 12 2223 </span>
+                                                </span>
+                                                <span class="message" style="margin-left:0px"> dsaasdas sadasd asd </span>
+                                            </a>
+                                        </li>
+										
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- END INBOX DROPDOWN -->
+                        <!-- BEGIN USER LOGIN DROPDOWN -->
+						<li class="">
+                            <a href="../index.php" class="btn green">
+                                <span class="username username-hide-on-mobile" > Go to Website </span>
+                            </a>
+                        </li>
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img alt="" class="img-circle" src="images/change-user-512.gif" />
+                                <span class="username username-hide-on-mobile"> Administrator </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                
+                                <li>
+                                    <a href="pass.php">
+                                        <i class="icon-settings"></i> Settings </a>
+                                </li>
+                                <li>
+                                    <a href="logout.php">
+                                        <i class="icon-key"></i> Log Out </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- END USER LOGIN DROPDOWN -->
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END HEADER INNER -->
+        </div>
+        <!-- END HEADER -->

@@ -116,78 +116,21 @@ include ("header.php");
 				<div class="page_content_wrapper page_main_content sidebar_content full_width fixed_column">
 					<div class="standard_wrapper">
 						<div id="15040201731700964661" class="portfolio_filter_wrapper gallery grid portrait three_cols" data-columns="3">
+							<?php
+							$select_query = mysqli_query($mysqli,"select * from category");
+							while($fetch_query = mysqli_fetch_array($select_query)){
+							?>
 							<div class="element grid classic3_cols animated1">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/t3.jpg);">
+								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(admin/uploads/<?php echo $fetch_query['category_image'];?>);">
 									<a class="car_image" href="product.php"></a>
 									<div class="portfolio_info_wrapper">
-										<h3>Computer Equipment</h3>
+										<h3><a href="product.php?id=<?php echo $fetch_query['category_id'];?>"><?php echo $fetch_query['category_name'];?></a></h3>
 									</div>
 								</div>
 							</div>
-							<div class="element grid classic3_cols animated2">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/AVBusinesslandingpage.jpg);">
-									<a class="car_image" href="product.php"></a>
-									<div class="portfolio_info_wrapper">
-										<h3>Audio &amp; visual Equipment</h3>
-									</div>
-								</div>
-							</div>
-							<div class="element grid classic3_cols animated3">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/Electronic-Test-Equipment-Sales.jpg);">
-									<a class="car_image" href="product.php"></a>
-									<div class="portfolio_info_wrapper">
-										<h3>Electronic Equipment</h3>
-									</div>
-								</div>
-							</div>
-							<div class="element grid classic3_cols animated4">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/Dental.jpg);">
-									<a class="car_image" href="product.php"></a>
-									<div class="portfolio_info_wrapper">
-										<h3>Dental Equipment</h3>
-									</div>
-								</div>
-							</div>
-							<div class="element grid classic3_cols animated5">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/iStock_000009856581Small.jpg);">
-									<a class="car_image" href="product.php"></a>
-									<div class="portfolio_info_wrapper">
-										<h3>Electrical Equipment</h3>
-									</div>
-								</div>
-							</div>
-							<div class="element grid classic3_cols animated6">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/Allproducts.jpg);">
-									<a class="car_image" href="product.php"></a>
-									<div class="portfolio_info_wrapper">
-										<h3>Product handling Equipment</h3>
-									</div>
-								</div>
-							</div>
-							<div class="element grid classic3_cols animated3">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/Electronic-Test-Equipment-Sales.jpg);">
-									<a class="car_image" href="product.php"></a>
-									<div class="portfolio_info_wrapper">
-										<h3>Electronic Equipment</h3>
-									</div>
-								</div>
-							</div>
-							<div class="element grid classic3_cols animated4">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/Dental.jpg);">
-									<a class="car_image" href="product.php"></a>
-									<div class="portfolio_info_wrapper">
-										<h3>Dental Equipment</h3>
-									</div>
-								</div>
-							</div>
-							<div class="element grid classic3_cols animated5">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(images/iStock_000009856581Small.jpg);">
-									<a class="car_image" href="product.php"></a>
-									<div class="portfolio_info_wrapper">
-										<h3>Electrical Equipment</h3>
-									</div>
-								</div>
-							</div>
+							<?php
+							}
+							?>
 						</div>
 					</div>
 				</div>

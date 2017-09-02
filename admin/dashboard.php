@@ -10,7 +10,7 @@ include ("config.php");
 
     <head>
         <meta charset="utf-8" />
-        <title>IsraFind | Dashboard</title>
+        <title>Admin | Dashboard</title>
         <?php include('metalinks.php'); ?>
 	</head>
     <!-- END HEAD -->

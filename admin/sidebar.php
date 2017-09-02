@@ -94,8 +94,8 @@
 								
                             </ul>
                         </li>
-						<!--<li class="nav-item <?php if($page_name == 'view_order.php' || $page_name == 'view_order.php') { ?>open<?php } ?> ">
-                                    <a href="order.php" class="nav-link nav-toggle">
+						<li class="nav-item <?php if($page_name == 'view_orders.php' || $page_name == 'view_orders.php') { ?>open<?php } ?> ">
+                                    <a href="orders.php" class="nav-link nav-toggle">
 										<i class="icon-compass"></i>
                                         <span class="title">Orders</span>
                                     </a>
@@ -103,7 +103,7 @@
                     
 						
 					
-                        <li class="heading">
+                       <!-- <li class="heading">
                             <h3 class="uppercase">Miscellaneous</h3>
                         </li>
                      

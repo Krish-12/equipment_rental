@@ -6,7 +6,7 @@ if(isset($_POST['submit']))
 {
 	$username = $_POST['Username'];
 	$password = $_POST['Password'];
-	$something_query = mysqli_query($mysqli,"select * from users where email ='".$username."' and password='".$password."'");
+	$something_query = mysqli_query($mysqli,"select * from users where email ='".$username."' and password='".$password."' and user_type='admin'");
 	$fetch_details = mysqli_fetch_array($something_query);
 	$check_rows = mysqli_num_rows($something_query);
 

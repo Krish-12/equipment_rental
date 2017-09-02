@@ -1,4 +1,26 @@
+<?php
+include("connection.php");
 
+if(isset($_POST['submit']))
+{
+	$username = $_POST['Username'];
+	$password = $_POST['Password'];
+	$something_query = mysqli_query($mysqli,"select * from users where email ='".$username."' and password='".$password."'");
+	$fetch_details = mysqli_fetch_array($something_query);
+	$check_rows = mysqli_num_rows($something_query);
+
+	if($check_rows > 0)
+	{
+		$_SESSION['user_id']= $fetch_details['id'];
+		$data = "success";
+		echo "<script>window.location.href='index.php'</script>";
+	}
+	else
+	{
+		$data = "error";
+	}	
+}
+?>
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
 	<head>
@@ -114,7 +136,7 @@ include ("header.php");
 							<div style="margin:auto;width:60%">
 								<div role="form" class="wpcf7" id="wpcf7-f2465-o1" lang="en-US" dir="ltr">
 									<div class="screen-reader-response"></div>
-									<form action="/grandcarrental/demo/contact-us/#wpcf7-f2465-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+									<form  method="post" class="wpcf7-form" novalidate="novalidate">
 										<div style="display: none;">
 											<input type="hidden" name="_wpcf7" value="2465" />
 											<input type="hidden" name="_wpcf7_version" value="4.8" />
@@ -128,7 +150,7 @@ include ("header.php");
 											<label> Your Email
 												<br />
 												<span class="wpcf7-form-control-wrap your-email">
-													<input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" />
+													<input type="email" name="Username" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" />
 												</span>
 											</label>
 										</p>
@@ -136,13 +158,13 @@ include ("header.php");
 											<label> Password
 												<br />
 												<span class="wpcf7-form-control-wrap your-subject">
-													<input type="text" name="your-subject" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" />
+													<input type="password" name="Password" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" />
 												</span>
 											</label>
 										</p>
 										
 										<p style="text-align:right;">
-											<input type="submit" value="Log In" class="wpcf7-form-control wpcf7-submit"  />
+											<input type="submit" name="submit" value="Log In" class="wpcf7-form-control wpcf7-submit"  />
 										</p>
 										<div class="wpcf7-response-output wpcf7-display-none"></div>
 									</form>

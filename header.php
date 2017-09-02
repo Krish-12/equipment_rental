@@ -1,5 +1,8 @@
+<?php
+	include("connection.php");	
+?>
 	
-		<!-- Begin template wrapper -->
+	<!-- Begin template wrapper -->
 		<div id="wrapper" class="hasbg transparent">
 			<div class="header_style_wrapper">
 				<!-- Begin top bar -->
@@ -116,10 +119,22 @@
 															</li>															
 														</ul>
 													</li>
-													<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-10">
-														<a href="login.php">Login</a>														
-													</li>
-													
+													<?php
+														if(isset($_SESSION['user_id']))
+															{
+															?>
+															<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-10"><a href="logout.php">Logout</a></li>
+															<?php
+															}
+															else
+															{
+															?>
+															<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-10">
+																<a href="login.php">Login</a>														
+															</li>
+															<?php
+															}
+															?>
 														</ul>
 													</li>
 												</ul>

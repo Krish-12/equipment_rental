@@ -92,9 +92,6 @@
 													<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children arrow menu-item-8">
 														<a href="#">Renters</a>														
 														<ul  class="sub-menu">
-															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-134">
-																<a href="signup.php">Sign Up</a>
-															</li>
 															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-162">
 																<a href="contact.php">Contact Us</a>
 															</li>
@@ -108,9 +105,6 @@
 													<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children arrow menu-item-9">
 														<a href="#">Suppliers</a>
 														<ul  class="sub-menu">
-															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-134">
-																<a href="signup.php">Sign Up</a>
-															</li>
 															<li class="menu-item menu-item-type-post_type menu-item-object-car menu-item-162">
 																<a href="contact.php">Contact Us</a>
 															</li>
@@ -129,6 +123,9 @@
 															else
 															{
 															?>
+															<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-10">
+																<a href="signup.php">Signup</a>														
+															</li>
 															<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  menu-item-10">
 																<a href="login.php">Login</a>														
 															</li>

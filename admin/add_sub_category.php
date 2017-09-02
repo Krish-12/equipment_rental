@@ -10,19 +10,16 @@ $image = $_FILES['sub_image']['name'];
 $save_image = rand(99,9999).$image;
 move_uploaded_file($tmp_image,"uploads/".$save_image);
 
-$insert_category = mysqli_query($mysqli, "insert sub_category values ('', '".
-$sub_category_name."', '".$save_image."', '".$category_name."') ");
+$insert_category = mysqli_query($mysqli, "insert sub_category values('','".$sub_category_name."','".$save_image."','".$category_name."') ");
 if($insert_category)
 {
 	$success == 1;
-	echo "
-<script>window.location.href='view_sub_category.php'</script>";
+	echo "<script>window.location.href='view_sub_category.php'</script>";
 }
 else
 {
 	$success == 0;
-	echo "
-<script>alert('error')</script>";
+	echo "<script>alert('error')</script>";
 }
 }
 
@@ -124,17 +121,14 @@ else
 																<span class="input-group-addon">
 																	<i class="fa fa-envelope"></i>
 																</span>
-																<select name="cat_name" data-required="1" class="form-control" required />
+																<select name="cat_name" data-required="1" class="form-control" />
 																<option selected disabled>Choose Category..</option>
 																<?php
-																$get_category = mysqli_query($mysqli, "select * from category");
-																while($fetch_category= mysqli_fetch_array($get_category))
+																$get_category_query = mysqli_query($mysqli,"select * from category");
+																while($get_fetch_category = mysqli_fetch_array($get_category_query))
 																{
 																?>
-																<option value="
-																	<?php echo $fetch_category['category_id']?>">
-																	<?php echo $fetch_category['category_name']?>
-																</option>
+																<option value="<?php echo $get_fetch_category['category_id'];?>"><?php echo $get_fetch_category['category_name']?></option>
 																<?php
 																}
 																?>

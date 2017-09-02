@@ -51,7 +51,7 @@ include("metalinks.php");
 include ("header.php");
 ?>
 		<div class="ppb_wrapper  ">
-			<div  class="one withsmallpadding ppb_car_search_background parallax withbg " style="padding-top: 150px !important;text-align:center;height:500px;background-image:url(images/slider3.jpg);background-position: center center;color:#ffffff;" >
+			<div  class="one withsmallpadding ppb_car_search_background parallax withbg " style="padding-top: 150px !important;text-align:center;height:500px;background-image:url(images/manufacturing-slide01.jpg);background-position: center center;margin-top:40px;color:#ffffff;" >
 				<div class="overlay_background" style="background:#000000;background:rgb(0,0,0,0.2);background:rgba(0,0,0,0.2);"></div>
 				<div class="center_wrapper">
 					<div class="inner_content">

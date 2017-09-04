@@ -112,6 +112,7 @@ include ("header.php");
 					</div>
 				</div>
 			</div>
+			<form method="POST">
 			<div  class="ppb_car_brand_grid one nopadding " >
 				<div class="page_content_wrapper page_main_content sidebar_content full_width fixed_column">
 					<div class="standard_wrapper">
@@ -121,12 +122,13 @@ include ("header.php");
 							while($fetch_query = mysqli_fetch_array($select_query)){
 							?>
 							<div class="element grid classic3_cols animated1">
-								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(admin/uploads/<?php echo $fetch_query['category_image'];?>);">
-									<a class="car_image" href="product.php"></a>
+							<a href="product.php?id=<?php echo $fetch_query['category_id'];?>" style="color:white;">
+								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(admin/uploads/<?php echo $fetch_query['category_image'];?>);">									
 									<div class="portfolio_info_wrapper">
-										<h3><a href="product.php?id=<?php echo $fetch_query['category_id'];?>"><?php echo $fetch_query['category_name'];?></a></h3>
+										<h3><?php echo $fetch_query['category_name'];?></h3>
 									</div>
 								</div>
+								</a>
 							</div>
 							<?php
 							}
@@ -135,6 +137,7 @@ include ("header.php");
 					</div>
 				</div>
 			</div>
+			</form>
 			<div  class="one withsmallpadding ppb_header " style="text-align:center;padding:60px 0 60px 0;background-color:#5856d6;color:#ffffff;" >
 				<div class="standard_wrapper">
 					<div class="page_content_wrapper">

@@ -107,188 +107,32 @@ include ("header.php");
 						<div id="page_main_content" class="sidebar_content full_width fixed_column">
 							<div class="standard_wrapper">
 								<div id="portfolio_filter_wrapper" class="gallery classic four_cols portfolio-content section content clearfix" data-columns="3">
+								<?php
+											$fetch_cat_id = $_GET['id'];
+											$cat_details = mysqli_query($mysqli,"select * from sub_category where category_id = '$fetch_cat_id' " );
+											while($fetch_details = mysqli_fetch_array($cat_details))
+												{
+										
+										?>
 									<div class="element grid classic4_cols animated2">
+										
 										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/image02.jpg" style="150px;"alt="BMW 3 Series" />
+											<a class="car_image" href="sub_product.php?id=<?php echo $fetch_details['sub_category_id'];?>">
+												<img src="admin/uploads/<?php echo $fetch_details['sub_category_image'];?>" style="height:250px;"alt="BMW 3 Series" />
 											</a>
 											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
+												<div class="car_attribute_wrapper">													
+														<h5 style="font-size:17px;"><a href="sub_product.php?id=<?php echo $fetch_details['sub_category_id'];?>"><?php echo $fetch_details['sub_category_name'];?></a></h5>
 													</a>												
 													<br class="clear"/>
 												</div>												
 											</div>
 										</div>
+										
 									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/Electronic-Test-Equipment-Sales.jpg" style="height:238px;"alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" >
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/testo-760-2-TRMS-multimeter-230V-front-free_master.jpg" style="height:238px;"alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/d1ce8486c28a56423ca2ab0ec1b52475--ecg-electrical-equipment.jpg" style="height:238px;"alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/image02.jpg" alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/Electronic-Test-Equipment-Sales.jpg" style="height:238px;"alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" >
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/testo-760-2-TRMS-multimeter-230V-front-free_master.jpg" style="height:238px;"alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/d1ce8486c28a56423ca2ab0ec1b52475--ecg-electrical-equipment.jpg" style="height:238px;"alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/image02.jpg" alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/image02.jpg" alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/image02.jpg" alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-									<div class="element grid classic4_cols animated2">
-										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php">
-												<img src="images/image02.jpg" alt="BMW 3 Series" />
-											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">
-													<a class="car_link" href="sub_product.php" style="height:225px;">
-														<h5>Electrical Equipment</h5>
-													</a>												
-													<br class="clear"/>
-												</div>												
-											</div>
-										</div>
-									</div>
-								
-								
+									<?php
+											}
+										?>	
 							</div>
 						</div>
 					</div>

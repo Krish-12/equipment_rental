@@ -39,6 +39,75 @@ img.emoji {
 	padding: 0 !important;
 }
 </style>
+<style>
+body { padding: 2em; }
+
+
+/* Shared */
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 40px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+}
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
+
+
+/* Facebook */
+.loginBtn--facebook {
+  background-color: #4C69BA;
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  text-shadow: 0 -1px 0 #354C8C;
+}
+.loginBtn--facebook:before {
+  border-right: #364e92 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
+}
+.loginBtn--facebook:hover,
+.loginBtn--facebook:focus {
+  background-color: #5B7BD5;
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+}
+
+
+/* Google */
+.loginBtn--google {
+  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  background: #DD4B39;
+}
+.loginBtn--google:before {
+  border-right: #BB3F30 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+}
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+  background: #E74B37;
+}
+</style>
+
 		<?php
 include("metalinks.php");
 ?>
@@ -145,6 +214,16 @@ include ("header.php");
 											<input type="hidden" name="_wpcf7_container_post" value="0" />
 											<input type="hidden" name="_wpcf7_nonce" value="d8f6cb8aae" />
 										</div>
+
+										
+
+										<button class="loginBtn loginBtn--google form-row-first">Login with Google</button>
+										<button class="loginBtn loginBtn--facebook form-row-last ">Login with Facebook</button>
+										<br><br><br>
+
+										<p>
+										<hr><br>
+										</p>
 								
 										<p>
 											<label> Your Email
@@ -162,9 +241,11 @@ include ("header.php");
 												</span>
 											</label>
 										</p>
+	
+										
 										
 										<p style="text-align:right;">
-											<input type="submit" name="submit" value="Log In" class="wpcf7-form-control wpcf7-submit"  />
+											<input type="submit" name="submit" value="Log In" class="wpcf7-form-control wpcf7-submit" style="margin-top:20px;" />
 										</p>
 										<div class="wpcf7-response-output wpcf7-display-none"></div>
 									</form>

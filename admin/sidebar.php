@@ -94,12 +94,18 @@
 								
                             </ul>
                         </li>
-						<li class="nav-item <?php if($page_name == 'view_orders.php' || $page_name == 'view_orders.php') { ?>open<?php } ?> ">
-                                    <a href="orders.php" class="nav-link nav-toggle">
-										<i class="icon-compass"></i>
-                                        <span class="title">Orders</span>
-                                    </a>
-                                </li>
+						<li class="nav-item <?php if($page_name == 'orders.php' || $page_name == 'orders.php') { ?>open<?php } ?> ">
+                              <a href="orders.php" class="nav-link nav-toggle">
+									<i class="icon-compass"></i>
+                                     <span class="title">Orders</span>
+                                </a>
+                         </li>
+						<li class="nav-item <?php if($page_name == 'users.php' || $page_name == 'users.php') { ?>open<?php } ?> ">
+                               <a href="users.php" class="nav-link nav-toggle">
+									<i class="icon-users"></i>
+                                     <span class="title">Users</span>
+                                </a>
+                         </li>
                     
 						
 					

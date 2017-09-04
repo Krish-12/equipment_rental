@@ -1,3 +1,40 @@
+<?php
+include("connection.php");
+
+if(isset($_POST['submit']))
+{
+	$fname=$_POST['fname'];
+	$lname=$_POST['lname'];
+	$email=$_POST['email'];
+	$password=$_POST['password'];
+	$phone=$_POST['phone'];
+	$category=$_POST['category'];
+
+	$select_email = mysqli_query($mysqli,"select * from users where email='".$email."'");
+	$fetch_details = mysqli_num_rows($select_email);
+	if($fetch_details=='0')
+	 {
+	
+	$insert_details = mysqli_query($mysqli,"insert users values('','".$fname."','".$lname."','".$phone."','".$email."','".$password."','".$category."','')");
+	if($insert_details)
+	{
+		$data = "success";
+		echo "<script>window.location.href='login.php'</script>";
+	}
+	else
+	{
+		$data = "error";
+	}
+	}
+	else
+		 {
+		$data = "email_exist";
+		 }
+	 
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
 	<head>
@@ -15,6 +52,75 @@ img.emoji {
 	vertical-align: -0.1em !important;
 	background: none !important;
 	padding: 0 !important;
+}
+</style>
+
+<style>
+body { padding: 2em; }
+
+
+/* Shared */
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+}
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
+
+
+/* Facebook */
+.loginBtn--facebook {
+  background-color: #4C69BA;
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  text-shadow: 0 -1px 0 #354C8C;
+}
+.loginBtn--facebook:before {
+  border-right: #364e92 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
+}
+.loginBtn--facebook:hover,
+.loginBtn--facebook:focus {
+  background-color: #5B7BD5;
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+}
+
+
+/* Google */
+.loginBtn--google {
+  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  background: #DD4B39;
+}
+.loginBtn--google:before {
+  border-right: #BB3F30 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+}
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+  background: #E74B37;
 }
 </style>
 		<?php
@@ -45,8 +151,8 @@ include("metalinks.php");
 		<input type="hidden" id="pp_footer_style" name="pp_footer_style" value="3"/>
 		<!-- Begin mobile menu -->
 		<?php
-include ("header.php");
-?>
+		include ("header.php");
+		?>
 		<div id="page_caption" class="hasbg parallax  withtopbar  " style="background-image:url(images/Dental.jpg);height:500px;" >
 			<div class="page_title_wrapper">
 				<div class="page_title_inner">
@@ -62,26 +168,185 @@ include ("header.php");
 				<!-- Begin main content -->
 				<div class="inner_wrapper">
 					<div class="sidebar_content full_width">
-						<div class="woocommerce">							
-							<form name="checkout" method="post" class="checkout woocommerce-checkout" action="#" enctype="multipart/form-data">
-								<div class="col2-set" id="customer_details">
+						<div class="woocommerce">
+								<?php
+										if(isset($data) && $data == "success")
+								{
+								?>
+								<p style="text-align:center;background:#5cb85c;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Added Successfully </p>
+								<?php
+								}else if(isset($data) && $data == "error"){
+								?>
+								<p style="text-align:center;background:#e54e53;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Error in Insertion </p>
+								<?php
+								}else if(isset($data) && $data == "email_exist"){
+								?>
+								<p style="text-align:center;background:#4a89dc;border:1px solid #CCC;border-radius:5px;padding:5px;color:#fff;font-weight:bold;margin-left:15px;"> Email Already Exist </p>
+								<?php
+								}
+								?>
+							<form name="checkout" method="post" class="checkout woocommerce-checkout" enctype="multipart/form-data">
+
+
+
+							<div class="ppb_wrapper hasbg withtopbar">
+			<div  class="one withsmallpadding ppb_text" style="text-align:center;padding:0px 0 0px 0;margin-top:20px;" >
+				<div class="standard_wrapper">
+					<div class="page_content_wrapper">
+						<div class="inner">
+							<div style="margin:auto;">
+							</p>
+							<h4 class="p1">
+								<span class="s1">
+									<b>Registrations Form </b>
+								</span>
+							</h4>
+							<div style="margin-top: 30px;">
+								<div class="social_wrapper shortcode dark ">
+									<ul>
+										<li class="facebook">
+											<a target="_blank" title="Facebook" href="#">
+												<i class="fa fa-facebook"></i>
+											</a>
+										</li>
+										<li class="twitter">
+											<a target="_blank" title="Twitter" href="https://twitter.com/#">
+												<i class="fa fa-twitter"></i>
+											</a>
+										</li>
+										<li class="youtube">
+											<a target="_blank" title="Youtube" href="#">
+												<i class="fa fa-youtube"></i>
+											</a>
+										</li>
+										<li class="pinterest">
+											<a target="_blank" title="Pinterest" href="https://pinterest.com/#">
+												<i class="fa fa-pinterest"></i>
+											</a>
+										</li>
+										<li class="instagram">
+											<a target="_blank" title="Instagram" href="https://instagram.com/">
+												<i class="fa fa-instagram"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div  class="one withsmallpadding ppb_text" style="text-align:left;padding:0px 0 0px 0;margin-bottom:60px;" >
+				<div class="standard_wrapper responsive">
+					<div class="page_content_wrapper">
+						<div class="inner">
+							<div style="margin:auto;width:60%">
+								<div role="form" class="wpcf7" id="wpcf7-f2465-o1" lang="en-US" dir="ltr">
+									<div class="screen-reader-response"></div>
+									<form  method="post" class="wpcf7-form" novalidate="novalidate">
+										<div style="display: none;">
+											<input type="hidden" name="_wpcf7" value="2465" />
+											<input type="hidden" name="_wpcf7_version" value="4.8" />
+											<input type="hidden" name="_wpcf7_locale" value="en_US" />
+											<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f2465-o1" />
+											<input type="hidden" name="_wpcf7_container_post" value="0" />
+											<input type="hidden" name="_wpcf7_nonce" value="d8f6cb8aae" />
+										</div>
+
+										<button class="loginBtn loginBtn--facebook form-row-last ">
+													 Login with Facebook
+										</button>
+
+										<button class="loginBtn loginBtn--google form-row-first">
+													  Login with Google
+										</button><br><br><br>
+
+										<p>
+										<hr><br>
+										</p>
+								
+										<p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
+													<label class="">First name 
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<input type="text" class="input-text " name="fname" id="fname" placeholder="Enter Your First Name"  value="" autocomplete="given-name" autofocus="autofocus" />
+												</p>
+												<p class="form-row form-row-last validate-required" id="billing_last_name_field" data-priority="20">
+													<label class="">Last name 
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<input type="text" class="input-text " name="lname" id="lname" placeholder="Enter Your Last Name"  value="" autocomplete="family-name" />
+												</p>
+
+												<p class="form-row form-row-first validate-required validate-phone" id="billing_phone_field" data-priority="100">
+													<label class="">Phone 
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<input type="tel" class="input-text " name="phone" id="phone" placeholder="Enter Your Phone No."  value="" autocomplete="tel" />
+												</p>
+												<p class="form-row form-row-last validate-required validate-email" id="billing_email_field" data-priority="110">
+													<label  class="">Email address 
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<input type="email" class="input-text " name="email" id="email" placeholder="Enter Your Email"  value="" autocomplete="email username" />
+												</p>
+
+												<p class="form-row form-row-first" id="" data-priority="100">
+													<label  class="">Password 
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<input type="password" class="input-text " name="password" id="password" placeholder="Enter Your Password"  value="" autocomplete="tel" />
+												</p>
+
+												<p class="form-row form-row-last validate-required validate-email" id="" data-priority="110">
+													<label  class="">Choose Category 
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<select name="category" REQUIRED>
+															<option value="">Choose Category...</option>
+															<option value="suppliers">Suppliers</option>
+															<option value="rental">Rental</option>
+													</select>
+												</p>
+	
+										
+										
+										<p style="text-align:right;">
+											<input type="submit" name="submit" value="Log In" class="wpcf7-form-control wpcf7-submit" style="margin-top:20px;" />
+										</p>
+										<div class="wpcf7-response-output wpcf7-display-none"></div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+								<!--<div class="col2-set" id="customer_details">
 									<div class="">
 										<div class="woocommerce-billing-fields">
 											<h3>Registration :</h3>
 											<div class="woocommerce-billing-fields__field-wrapper">
 												<p class="form-row form-row-first validate-required" id="billing_first_name_field" data-priority="10">
-													<label for="billing_first_name" class="">First name 
+													<label class="">First name 
 														<abbr class="required" title="required">*</abbr>
 													</label>
-													<input type="text" class="input-text " name="billing_first_name" id="billing_first_name" placeholder=""  value="" autocomplete="given-name" autofocus="autofocus" />
+													<input type="text" class="input-text " name="fname" id="fname" placeholder="Enter Your First Name"  value="" autocomplete="given-name" autofocus="autofocus" />
 												</p>
 												<p class="form-row form-row-last validate-required" id="billing_last_name_field" data-priority="20">
-													<label for="billing_last_name" class="">Last name 
+													<label class="">Last name 
 														<abbr class="required" title="required">*</abbr>
 													</label>
-													<input type="text" class="input-text " name="billing_last_name" id="billing_last_name" placeholder=""  value="" autocomplete="family-name" />
+													<input type="text" class="input-text " name="lname" id="lname" placeholder="Enter Your Last Name"  value="" autocomplete="family-name" />
 												</p>
-												<p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
+												<!--<p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
 													<label for="billing_company" class="">Company name</label>
 													<input type="text" class="input-text " name="billing_company" id="billing_company" placeholder=""  value="" autocomplete="organization" />
 												</p>
@@ -373,35 +638,56 @@ include ("header.php");
 													<input type="text" class="input-text " name="billing_postcode" id="billing_postcode" placeholder=""  value="" autocomplete="postal-code" />
 												</p>
 												<p class="form-row form-row-first validate-required validate-phone" id="billing_phone_field" data-priority="100">
-													<label for="billing_phone" class="">Phone 
+													<label class="">Phone 
 														<abbr class="required" title="required">*</abbr>
 													</label>
-													<input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder=""  value="" autocomplete="tel" />
+													<input type="tel" class="input-text " name="phone" id="phone" placeholder="Enter Your Phone No."  value="" autocomplete="tel" />
 												</p>
 												<p class="form-row form-row-last validate-required validate-email" id="billing_email_field" data-priority="110">
-													<label for="billing_email" class="">Email address 
+													<label  class="">Email address 
 														<abbr class="required" title="required">*</abbr>
 													</label>
-													<input type="email" class="input-text " name="billing_email" id="billing_email" placeholder=""  value="" autocomplete="email username" />
+													<input type="email" class="input-text " name="email" id="email" placeholder="Enter Your Email"  value="" autocomplete="email username" />
 												</p>
 
 												<p class="form-row form-row-first" id="" data-priority="100">
-													<label for="billing_phone" class="">Password 
+													<label  class="">Password 
 														<abbr class="required" title="required">*</abbr>
 													</label>
-													<input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder=""  value="" autocomplete="tel" />
+													<input type="password" class="input-text " name="password" id="password" placeholder="Enter Your Password"  value="" autocomplete="tel" />
 												</p>
+
+												<p class="form-row form-row-last validate-required validate-email" id="" data-priority="110">
+													<label  class="">Choose Category 
+														<abbr class="required" title="required">*</abbr>
+													</label>
+													<select name="category" REQUIRED>
+															<option value="">Choose Category...</option>
+															<option value="suppliers">Suppliers</option>
+															<option value="rental">Rental</option>
+													</select>
+												</p>
+												<p><label>or</label></p>
+												<button class="loginBtn loginBtn--facebook form-row-last col-md-4">
+													 Login with Facebook
+													</button>
+												<button class="loginBtn loginBtn--facebook form-row-last col-md-6">
+													OR
+													</button>
+													<button class="loginBtn loginBtn--google form-row-first col-md-4">
+													  Login with Google
+													</button>
 												<p class="form-row form-row-last" style="text-align:right;" id="" data-priority="110">
-													<label for="billing_email" class="">Click to Sign up  
+													<label  class="">Click to Sign up  
 														
 													</label>
-													<input type="submit" value="Sign Up" class=""  />
+													<input type="submit" name="submit" value="Sign Up" class="" style="margin-top:10px;" />
 												</p>
 											</div>
 										</div>
 										
 									</div>									
-								</div>							
+								</div>-->							
 							</form>
 						</div>
 					</div>

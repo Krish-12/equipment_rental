@@ -85,6 +85,7 @@
                                             <tr>
 												<th class="all">Sl. No.</th>
 												<th class="all">Category Name</th>
+												<th class="all">Sub Category Name</th>
                                                 <th class="all">Service Name</th>
 												<th class="all">Service Description</th>
                                                 <th class="none">Service Image</th>
@@ -101,7 +102,7 @@
 												$i= 1;
 												while($fetch_details = mysqli_fetch_array($get_details))
 												{
-											?>
+												?>
 											<tr>
 												<td style="padding:20px;"><?php echo $i;?></td>
 												<td style="padding:20px;">
@@ -113,8 +114,17 @@
 											?>		
 												</td>
 
+												<td style="padding:20px;">
+											<?php
+												$sub_cat_id = $fetch_details['sub_cat_id'];
+												$get_subcategory_query = mysqli_query($mysqli,"select * from sub_category where sub_category_id='".$sub_cat_id."'");
+												$get_fetch_subcategory_name = mysqli_fetch_array($get_subcategory_query);
+												echo $get_fetch_subcategory_name['sub_category_name']
+											?>		
+												</td>
+
 												<td style="padding:20px;"><?php echo $fetch_details['service_name'];?></td>
-												<td style="padding:20px;"><?php echo $fetch_details['description'];?></td>
+												<td style="padding:20px;"><?php echo substr($fetch_details['description'],0,50);?></td>
                                                <td>
 											   <?php
 												$service_id = $fetch_details['service_id'];

@@ -3,16 +3,17 @@
 
 	if(isset($_POST['submit_service']))
 	{
-		$cat_name= $_POST['cat_name'];
-		$ser_name =$_POST['ser_name'];
-		$ser_desc =$_POST['desc'];
+		$cat_name= mysqli_real_escape_string($mysqli,$_POST['cat_name']);
+		$sub_cat_name= mysqli_real_escape_string($mysqli,$_POST['sub_cat_name']);
+		$ser_name =mysqli_real_escape_string($mysqli,$_POST['ser_name']);
+		$ser_desc =mysqli_real_escape_string($mysqli,$_POST['desc']);
 		$tmp_image = $_FILES['image']['tmp_name'];
 		$image = $_FILES['image']['name'];
 		$save_image = rand(99,9999).$image;
 		move_uploaded_file($tmp_image,"uploads/".$save_image);
-		$ser_price =$_POST['price'];
+		$ser_price =mysqli_real_escape_string($mysqli,$_POST['price']);
 		
-		$add_ser= mysqli_query($mysqli, "INSERT INTO service VALUES('','".$cat_name."','".$ser_name."','".$ser_desc."','".$ser_price."')");
+		$add_ser= mysqli_query($mysqli, "INSERT INTO service VALUES('','".$cat_name."','".$sub_cat_name."','".$ser_name."','".$ser_desc."','".$ser_price."')");
 		if($add_ser){
 			$last_ser_id = mysqli_insert_id($mysqli);
 			for($i=0 ; $i<sizeof($image) ; $i++){
@@ -161,9 +162,19 @@
 																	<span class="input-group-addon">
 																		<i class="fa fa-envelope"></i>
 																	</span>
-																	<select name="cat_name" data-required="1" class="form-control subcat" required />
+																	<select name="sub_cat_name" data-required="1" class="form-control subcat" required />
 																		<option selected disabled>Choose sub Category..</option>
-																	
+																		<?php
+																			$get_sub_category = mysqli_query($mysqli, "select * from sub_category");
+																			while($fetch_sub_category= mysqli_fetch_array($get_sub_category))
+																			{
+																		?>
+																		<option value="<?php echo $fetch_category['sub_category_id']?>">
+																			<?php echo $fetch_category['sub_category_name']?>
+																		</option>
+																		<?php
+																		}
+																		?>
 																	</select>
 																</div>
 															</div>

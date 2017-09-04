@@ -107,7 +107,7 @@ include ("header.php");
 						<div id="page_main_content" class="sidebar_content full_width fixed_column">
 							<div class="standard_wrapper">
 								<div id="portfolio_filter_wrapper" class="gallery classic four_cols portfolio-content section content clearfix" data-columns="3">
-								<?php
+										<?php
 											$fetch_cat_id = $_GET['id'];
 											$cat_details = mysqli_query($mysqli,"select * from sub_category where category_id = '$fetch_cat_id' " );
 											while($fetch_details = mysqli_fetch_array($cat_details))
@@ -120,9 +120,9 @@ include ("header.php");
 											<a class="car_image" href="sub_product.php?id=<?php echo $fetch_details['sub_category_id'];?>">
 												<img src="admin/uploads/<?php echo $fetch_details['sub_category_image'];?>" style="height:250px;"alt="BMW 3 Series" />
 											</a>
-											<div class="portfolio_info_wrapper">
-												<div class="car_attribute_wrapper">													
-														<h5 style="font-size:17px;"><a href="sub_product.php?id=<?php echo $fetch_details['sub_category_id'];?>"><?php echo $fetch_details['sub_category_name'];?></a></h5>
+											<div class="portfolio_info_wrapper" style="height:32px;">
+												<div class="">													
+														<h5 style="font-size:18px;"><a href="sub_product.php?id=<?php echo $fetch_details['sub_category_id'];?>"><?php echo $fetch_details['sub_category_name'];?></a></h5>
 													</a>												
 													<br class="clear"/>
 												</div>												

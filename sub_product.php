@@ -107,17 +107,31 @@ include ("header.php");
 					<div id="page_main_content" class="sidebar_content left_sidebar fixed_column">
 						<div class="standard_wrapper">
 							<div id="portfolio_filter_wrapper" class="gallery classic two_cols portfolio-content section content clearfix" data-columns="3">
-								<div class="car_list_wrapper floatleft themeborder">
+										<?php
+											$fetch_sub_cat_id = $_GET['id'];
+											$subcat_details = mysqli_query($mysqli,"select * from service where sub_cat_id = '$fetch_sub_cat_id' " );
+											while($fetch_details = mysqli_fetch_array($subcat_details))
+												{
+										?>
+
+								<div class="car_list_wrapper floatleft themeborder">								
 									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
+									<?php
+										$image_id=$fetch_details['service_id'];
+										$service_image = mysqli_query($mysqli,"select * from service_image where service_id = '$image_id' " );
+										$fetch_images = mysqli_fetch_array($service_image);
+									?>
+
+										<a class="car_image" href="view_product.php?id=<?php echo $fetch_details['service_id'];?>">
+											<img src="admin/uploads/<?php echo $fetch_images['service_image'];?>"style="height:230px;" alt="" />
 										</a>
 									</div>
 									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
+										<div class="car_attribute_wrapper">											
+											<h3><a href="view_product.php?id=<?php echo $fetch_details['service_id'];?>"><?php echo	
+												$fetch_details['service_name'];?></a>
+											</h3>
+											
 											<div class="car_attribute_rating">
 												<div class="br-theme-fontawesome-stars-o">
 													<div class="br-widget">
@@ -139,546 +153,27 @@ include ("header.php");
 										<div class="car_attribute_price">
 											<div class="car_attribute_price_day two_cols">
 												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
+												<span class="single_car_price"><?php echo $fetch_details['price'];?></span>
 												<span class="car_unit_day">Per Day</span>
 											</div>
 										</div>
 										<ul class="single_car_departure_wrapper themeborder">
 											<li>
 												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
+												<a href="view_product.php?id=<?php echo $fetch_details['service_id'];?>"  style="color:black;">
+													<?php echo substr($fetch_details['description'],0,100);?>....
+													</a>
 												</div>
 											</li>
 										</ul>
 									</div>
+									</a>
 								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="car_list_wrapper floatleft themeborder">
-									<div class="one_third">
-										<a class="car_image" href="view_product.php">
-											<img src="images/Dental.jpg" style="height:230px;" alt="BMW 3 Series" />
-										</a>
-									</div>
-									<div class="two_third last">
-										<div class="car_attribute_wrapper">
-											<a class="car_link" href="view_product.php">
-												<h3>Dental Equipment</h3>
-											</a>
-											<div class="car_attribute_rating">
-												<div class="br-theme-fontawesome-stars-o">
-													<div class="br-widget">
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;" class="br-selected"></a>
-														<a href="javascript:;"></a>
-													</div>
-												</div>
-												<div class="car_attribute_rating_count">
-														4&nbsp;
-														reviews					   			
-												</div>
-											</div>
-											
-											<br class="clear"/>
-										</div>
-										<div class="car_attribute_price">
-											<div class="car_attribute_price_day two_cols">
-												<span class="single_car_currency">$</span>
-												<span class="single_car_price">64</span>
-												<span class="car_unit_day">Per Day</span>
-											</div>
-										</div>
-										<ul class="single_car_departure_wrapper themeborder">
-											<li>
-												<div class="single_car_departure_content full_width">
-													<div class=" ">
-														Dental This is sample of page tagline and you can set it up using page option										
-													</div>													
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
+											<?php
+												}
+											?>	
 							</div>
-							<br class="clear"/>
-							<div class="pagination">
-								<span class="current">1</span>
-								<a href='/page/2/' class="inactive">2</a>
-							</div>
-							<div class="pagination_detail">
-	     		     	Page 1 of 2	     </div>
+							<br class="clear"/>							
 						</div>
 					</div>
 					<div class="sidebar_wrapper left_sidebar">
@@ -694,41 +189,6 @@ include ("header.php");
 											<span class="ti-alarm-clock" style="margin-right:10px;"></span>Mon - Sat 8.00 - 18.00
 										</div>
 									</li>
-									<li id="grandcarrental_cat_posts-2" class="widget grandcarrental_Cat_Posts">
-										<h2 class="widgettitle">
-											<span>Rental Tips</span>
-										</h2>
-										<ul class="posts blog withthumb ">
-											<li>
-												<div class="post_circle_thumb">
-													<a href="#">
-														<img class="alignleft frame post_thumb" src="images/d1ce8486c28a56423ca2ab0ec1b52475--ecg-electrical-equipment.jpg" style=";" alt="" />
-													</a>
-												</div>
-												<a href="#">Dental Equipment rentals</a>
-												<div class="post_attribute">January 5, 2017</div>
-											</li>
-											<li>
-												<div class="post_circle_thumb">
-													<a href="#">
-														<img class="alignleft frame post_thumb" src="images/d1ce8486c28a56423ca2ab0ec1b52475--ecg-electrical-equipment.jpg" style=";" alt="" />
-													</a>
-												</div>
-												<a href="#">Dental Equipment rentals</a>
-												<div class="post_attribute">January 5, 2017</div>
-											</li>
-											<li>
-												<div class="post_circle_thumb">
-													<a href="#">
-														<img class="alignleft frame post_thumb" src="images/d1ce8486c28a56423ca2ab0ec1b52475--ecg-electrical-equipment.jpg" style=";" alt="" />
-													</a>
-												</div>
-												<a href="#">Dental Equipment rentals</a>
-												<div class="post_attribute">January 5, 2017</div>
-											</li>
-										</ul>
-									</li>
-									
 									<li id="grandcarrental_social_profiles_posts-3" class="widget grandcarrental_Social_Profiles_Posts">
 										<h2 class="widgettitle">Connect with Us</h2>
 										<div class="social_wrapper shortcode light small">

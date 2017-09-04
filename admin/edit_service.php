@@ -7,10 +7,11 @@
 	if(isset($_POST['submit_service']))
 
 {
-		$cat_id= $_POST['cat_name'];
-		$ser_name =$_POST['ser_name'];
-		$ser_desc =$_POST['desc'];
-		$ser_price =$_POST['price'];
+		$cat_id= mysqli_real_escape_string($mysqli,$_POST['cat_name']);
+		$sub_cat_id= mysqli_real_escape_string($mysqli,$_POST['sub_cat_name']);
+		$ser_name =mysqli_real_escape_string($mysqli,$_POST['ser_name']);
+		$ser_desc =mysqli_real_escape_string($mysqli,$_POST['desc']);
+		$ser_price =mysqli_real_escape_string($mysqli,$_POST['price']);
 		
 			
 		if($_FILES['ser_image']['name']==''){
@@ -19,7 +20,7 @@
 		$tmp_image = $_FILES['ser_image']['tmp_name'];
 		$image = $_FILES['ser_image']['name'];
 	}
-	$update_service = mysqli_query($mysqli,"UPDATE service set category_id='".$cat_id."',service_name='".$ser_name."',description='".$ser_desc."',price='".$ser_price."' where service_id='".$service_id."'");
+	$update_service = mysqli_query($mysqli,"UPDATE service set category_id='".$cat_id."',sub_cat_id='".$sub_cat_id."',service_name='".$ser_name."',description='".$ser_desc."',price='".$ser_price."' where service_id='".$service_id."'");
 
 	if($update_service){
 		for($i=0;$i<sizeof($image);$i++){
@@ -145,38 +146,46 @@
                                                 <button class="close" data-close="alert"></button> Oops!! Something went wrong. Please try Again.
 											</div>
 
-											<div class="form-group ">
-                                       <label class="control-label col-md-3">Select Category : - </label>
+								<div class="form-group ">
+                                   <label class="control-label col-md-3">Select Category : - </label>
                                    <div class="col-md-9">
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="fa fa-envelope"></i>
-														</span>
-													<select name="cat_name" data-required="1" class="form-control" />
-														<?php
-															$category_id=$get_fetch_category['category_id'];
-															$get_category_query = mysqli_query($mysqli,"select * from category where category_id='".$category_id."'");
-															while($get_fetch_category = mysqli_fetch_array($get_category_query))
-															{
-															?>
-																<option value="<?php echo $get_fetch_category['category_id'];?>" ><?php echo $get_fetch_category['category_name'];?></option>
-															<?php
-															}
-															?>
-															<?php
-																$get_category_query = mysqli_query($mysqli,"select * from category");
-																while($get_fetch_category = mysqli_fetch_array($get_category_query))
-															{
-															?>
-																<option value="<?php echo $get_fetch_category['category_id'];?>"><?php echo $get_fetch_category['category_name']?></option>
-															<?php
-															}
-															?>
-                                     </select>
-													</div>
-												</div>
+										<div class="input-group">
+												<span class="input-group-addon">
+													<i class="fa fa-envelope"></i>
+												</span>
+											<select name="cat_name" data-required="1" class="form-control" onchange="choose_sub(this.value);"/>
+												<?php
+													$get_category_query = mysqli_query($mysqli,"select * from category");
+													while($get_fetch_category = mysqli_fetch_array($get_category_query))
+													{
+													?>
+														<option value="<?php echo $get_fetch_category['category_id'];?>" <?php echo(($get_fetch_category['category_id']==$fetch_details['category_id'])?'selected':'');?>><?php echo $get_fetch_category['category_name']?></option>
+													<?php
+													}
+													?>
+											</select>
+										</div>
+									</div>
 								</div>  
                                       
+									  <div class="form-group ">
+										<label class="control-label col-md-3">Sub Category : </label>
+										<div class="col-md-9">
+											<div class="input-group">
+												<span class="input-group-addon">
+													<i class="fa fa-envelope"></i>
+												</span>
+												<select name="sub_cat_name" data-required="1" class="form-control subcat" required />
+												<?php
+												$select_sub = mysqli_query($mysqli,"select * from sub_category where sub_category_id='".$fetch_details['sub_cat_id']."'");
+												$fetch_sub = mysqli_fetch_array($select_sub);
+												?>
+													<option value="<?php echo $fetch_sub['sub_category_id'];?>" selected><?php echo $fetch_sub['sub_category_name'];?></option>
+												</select>
+											</div>
+										</div>
+									</div>
+
 											
 											<div class="form-group">
                                                 <label class="control-label col-md-3">Service Name : -
@@ -299,6 +308,15 @@
         </div>
         <!-- END CONTAINER -->
         <?php include('footer.php'); ?>
+
+		<script>
+							function choose_sub(e){
+								$.post("ajax_subcat.php", {cat_id: e}, function(result){
+									//alert(result);
+									$(".subcat").html(result);
+								});
+							}
+						</script>
     </body>
 	<!-- jQuery Form Validation code -->
 		

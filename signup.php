@@ -15,7 +15,7 @@ if(isset($_POST['submit']))
 	if($fetch_details=='0')
 	 {
 	
-	$insert_details = mysqli_query($mysqli,"insert users values('','".$fname."','".$lname."','".$phone."','".$email."','".$password."','".$category."','')");
+	$insert_details = mysqli_query($mysqli,"insert users values('','".$fname."','".$lname."','".$phone."','".$email."','".$password."','".$category."','ACTIVE','')");
 	if($insert_details)
 	{
 		$data = "success";
@@ -314,7 +314,7 @@ include("metalinks.php");
 										
 										
 										<p style="text-align:right;">
-											<input type="submit" name="submit" value="Log In" class="wpcf7-form-control wpcf7-submit" style="margin-top:20px;" />
+											<input type="submit" name="submit" value="Sign Up" class="wpcf7-form-control wpcf7-submit" style="margin-top:20px;" />
 										</p>
 										<div class="wpcf7-response-output wpcf7-display-none"></div>
 									</form>

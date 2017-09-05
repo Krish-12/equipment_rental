@@ -13,6 +13,20 @@
 			echo "<script>window.location.href='orders.php'</script>";
 		}
 	}
+if(isset($_GET['accept_id'])){
+$accept_id = $_GET['accept_id'];
+$accept = mysqli_query($mysqli, "update orders set status = 'accepted' where order_id = '".$accept_id."'");
+
+if($accept)
+	{
+	echo "<script>window.location.href='orders.php'</script>";
+	}
+else
+	{
+		echo "<script>alert('unable to accept')</script>";
+	}
+
+}
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]>
@@ -92,6 +106,8 @@
 														<th class="all">Price</th>
 														<th class="all">Quantity</th>
 														<th class="all">Total</th>
+														<th class="all">Status</th>
+														<th class="all">Action</th>
 														<th class="desktop">Delete</th>
 													</tr>
 												</thead>
@@ -115,8 +131,8 @@
 															</td>
 															<td style="padding:20px;"><?php echo $fetch_details['price'];?></td>							<td style="padding:20px;"><?php echo $fetch_details['quantity'];?></td>
 															<td style="padding:20px;"><?php echo $fetch_details['total'];?></td>
-															<!--<td style="padding:20px;"><a href="edit_service.php?service_id=
-															<?php echo $fetch_details['service_id']?>" class="btn blue btn-outline sbold uppercase">Edit</a></td>-->
+															<td style="padding:20px;"><?php echo $fetch_details['status'];?></td>
+															<td style="padding:20px;"><a href="?accept_id=<?php echo $fetch_details['order_id'];?>" class="btn green btn-outline sbold uppercase">Acccept</a></td>
 															<td style="padding:20px;"><a href="?delete_id=<?php echo $fetch_details['order_id']?>" class="btn red btn-outline sbold uppercase">Delete</a></td>
 														</tr>
 													<?php

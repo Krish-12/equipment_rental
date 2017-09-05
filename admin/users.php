@@ -12,10 +12,11 @@ include('config.php');
 		$change_status = mysqli_query($mysqli,"DELETE FROM users where id='".$user_id."'");
 		if($delete_user)
 		{
-			echo "<script>window.location.href='view_users.php'</script>";
+			echo "<script>window.location.href='users.php'</script>";
 		}
 	}
-	$id = mysqli_query($mysqli,"select * from users");
+
+$id = mysqli_query($mysqli,"select * from users");
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -82,32 +83,47 @@ include('config.php');
                                     <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                                         <thead>
                                             <tr>
+												<th >Sl.No.</th>
                                                 <th >Name</th>
                                                 <th >Email</th>
 												<th >Password</th>
 												<th >Phone</th>
 												<th >Category</th>
+												<th >Status</th>
+												<th >Action</th>
 												<th >Action</th>
                                             </tr>
                                         </thead>
-										<tbody>
+										<tbody id="all_data">
 											<tr>
 											<?php
+											$i= 1;
 											$query = mysqli_query($mysqli,"select * from users where user_type != 'ADMIN'");
 											
 												while($fetch_details = mysqli_fetch_array($query))
 												{
 												?>
+												<td><?php echo $i;?></td>
 												<td><?php echo $fetch_details['fname'];?>&nbsp;&nbsp;<?php echo $fetch_details['lname'];?></td>
 												<td><?php echo $fetch_details['email'];?></td>
 												<td><?php echo $fetch_details['password'];?></td>
 												<td><?php echo $fetch_details['phone'];?></td>
 												<td><?php echo $fetch_details['category'];?></td>
-												<td ><a href="?delete_id=<?php echo $fetch_details['id']?>" class="btn red btn-outline sbold uppercase">Delete</a></td>
-											</tr>
-											<?php
+												<td><?php echo $fetch_details['status'];?></td>
+												<td>
+													<button class="btn green btn-outline sbold uppercase" onclick="change_status();"><?php echo (($fetch_details['status']=='ACTIVE')?'INACTIVE':'ACTIVE');?></button>
+													<input type="hidden" value="<?php echo $fetch_details['status']?>" class="stat">
+													<input type="hidden" value="<?php echo $fetch_details['id']?>" class="user_id">
+												</td>
+												<td >
+													<a href="?delete_id=<?php echo $fetch_details['id']?>" class="btn red btn-outline sbold uppercase">Delete</a>
+												</td>
+												<?php
+											$i++;
 												}
 												?>
+											</tr>
+											
 										</tbody>
                                       
                                     </table>
@@ -123,6 +139,17 @@ include('config.php');
         </div>
         <!-- END CONTAINER -->
         <?php include('footer.php') ?>
+		<script>
+		function change_status()
+		{
+			var stat = $('.stat').val();
+			var user_id = $('.user_id').val();
+			$.post("ajax_status.php", {status: stat,user_id: user_id}, function(result){
+				//alert(result);
+				$("#all_data").html(result);
+			});
+		}
+		</script>
     </body>
 
 </html>

@@ -72,42 +72,47 @@ if(isset($_POST['search']))
 			</div>
 			<!-- Begin content -->
 			<div id="page_content_wrapper" class="hasbg withtopbar ">
-				<form id="car_search_form" name="car_search_form" method="get" action="#">
+				<form id="car_search_form" name="car_search_form" method="POST">
 					<div class="car_search_wrapper">
 						<div class="one_fourth themeborder">
-							<select id="brand" name="brand">
-								<option value="">Any Brand</option>
-								<option value="Audi">Electronic</option>
-								<option value="BMW">computer</option>
-								<option value="Lexus">Electrical</option>
-								<option value="Mercedes Benz">Dental</option>
-								<option value="MINI">Laboratory</option>
-								<option value="Porsche">Construction</option>
+							<select onchange="get_subcat(this)" name="cat">
+											
+											<?php
+												if(isset($_GET['cat']))
+												{
+													$cat_query = mysqli_query($mysqli,"select * from category where category_id='".$_GET['cat']."'");
+													$fetch_cat = mysqli_fetch_array($cat_query);
+													$cat_value = $_GET['cat'];
+													$cat_name = $fetch_cat['category_name'];
+												}
+											?>
+											<option <?php echo((isset($_GET['cat']))?'':'selected disabled');?>>Choose Equipment</option>
+											<?php
+												$get_category = mysqli_query($mysqli, "select * from category");
+												while($fetch_category= mysqli_fetch_array($get_category))
+												{
+											?>
+											<option value="<?php echo $fetch_category['category_id']?>" <?php echo((isset($_GET['cat'])) && ($_GET['cat'] == $fetch_category['category_id'])?'selected':'');?>>
+												<?php echo $fetch_category['category_name']?>
+											</option>
+											<?php
+											}
+											?>
+										</select>
+							<span class="ti-angle-down"></span>
+						</div>
+						<div class="one_fourth themeborder">
+							<select class="cat_id" name="sub_cat" id="value">
+								<option selected disabled>Choose Equipment Type</option>
 							</select>
 							<span class="ti-angle-down"></span>
 						</div>
 						<div class="one_fourth themeborder">
-							<select id="type" name="type">
-								<option value="">Any Type</option>
-								<option value="Coupe">Electronic</option>
-								<option value="Sedan">computer</option>
-								<option value="SUV">Laboratory</option>
-							</select>
-							<span class="ti-angle-down"></span>
-						</div>
-						<div class="one_fourth themeborder">
-							<select id="sort_by" name="sort_by">
-								<option value="price_low">Price Low to High</option>
-								<option value="price_high">Price High to Low</option>
-								<option value="model">Sort By Model</option>
-								<option value="popular">Sort By Popularity</option>
-								<option value="review">Sort By Review Score</option>
-							</select>
-							<span class="ti-exchange-vertical"></span>
-						</div>
+										<input type="text" name="key_words" placeholder="Type Here">										
+									</div>
 						<div class="one_fourth last themeborder">
-							<input id="car_search_btn" type="submit" class="button" value="Search"/>
-						</div>
+										<input type="submit" class="button" name="search" value="Search"/>
+									</div>
 					</div>
 				</form>
 				<!-- Begin content -->
@@ -117,7 +122,7 @@ if(isset($_POST['search']))
 							<div class="standard_wrapper">
 								<div id="portfolio_filter_wrapper" class="gallery classic four_cols portfolio-content section content clearfix" data-columns="3">
 										<?php
-											$fetch_cat_id = $_GET['id'];
+											$fetch_cat_id = $_GET['cat'];
 											$cat_details = mysqli_query($mysqli,"select * from sub_category where category_id = '$fetch_cat_id' " );
 											while($fetch_details = mysqli_fetch_array($cat_details))
 												{
@@ -126,12 +131,12 @@ if(isset($_POST['search']))
 									<div class="element grid classic4_cols animated2">
 										
 										<div class="one_fourth gallery4 classic static filterable portfolio_type themeborder" data-id="post-2">
-											<a class="car_image" href="sub_product.php?id=<?php echo $fetch_details['sub_category_id'];?>">
+											<a class="car_image" href="sub_product.php?sub_cat=<?php echo $fetch_details['sub_category_id'];?>">
 												<img src="admin/uploads/<?php echo $fetch_details['sub_category_image'];?>" style="height:250px;"alt="BMW 3 Series" />
 											</a>
 											<div class="portfolio_info_wrapper" style="height:32px;">
 												<div class="">													
-														<h5 style="font-size:18px;"><a href="sub_product.php?id=<?php echo $fetch_details['sub_category_id'];?>"><?php echo $fetch_details['sub_category_name'];?></a></h5>
+														<h5 style="font-size:18px;"><a href="sub_product.php?sub_cat=<?php echo $fetch_details['sub_category_id'];?>"><?php echo $fetch_details['sub_category_name'];?></a></h5>
 													</a>												
 													<br class="clear"/>
 												</div>												
@@ -153,6 +158,24 @@ if(isset($_POST['search']))
 			<?php
 include ("footer.php");
 ?>
+
+<script>
+			function get_subcat(e){
+				var affiliate_id = $(e).val();
+
+				$.ajax({
+				  type: 'post',
+				  url: 'ajax_subcat.php',
+				  data:{
+					catid:affiliate_id
+				  },
+				  success: function (response){
+				  document.getElementById("value").innerHTML=response;
+				
+				 }
+				});
+							}
+		</script>
 		</div>
 		<script type="text/javascript">(function() {function addEventListener(element,event,handler) {
 	if(element.addEventListener) {

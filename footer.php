@@ -104,6 +104,9 @@
 							<li id="menu-item-3136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3136">
 								<a href="contact.php">Contact Us</a>
 							</li>
+							<li id="menu-item-3136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3136">
+								<a href="privacy.php">Privacy Policy</a>
+							</li>
 						</ul>
 					</div>
 					<div id="copyright">© Copyright Equipment Rental Theme - Theme by Clickrstop</div>

@@ -62,33 +62,15 @@ include ("header.php");
 					</div>
 				</div>
 			</div>
-			<div  class="one withsmallpadding ppb_header " style="text-align:center;padding:50px 0 50px 0;background-color:#5856d6;color:#ffffff;margin-top:-50px;" >
-				<div class="standard_wrapper">
-					<div class="page_content_wrapper">
+			<div  class="one withsmallpadding ppb_header " style="text-align:center;padding:50px 0 50px 0;background-color:white;color:#ffffff;margin-top:-50px;" >
+				<div class="standard_wrapper" style="background-color:white;">
+					<div class="page_content_wrapper" style="color:black;">
 						<div class="inner">
 							<div style="margin:auto;width:50%">
-								<h2 class="ppb_title" style="color:#ffffff;">This adventure isn’t about change but it seems to be an inevitability.</h2>
+								<h2 class="ppb_title" style="color:black;">This adventure isn’t about change but it seems to be an inevitability.</h2>
 								<div class="ppb_header_content">
 									<p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud.Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth art party deep v chillwave. Seitan High Life reprehenderit consectetur cupidatat kogi. Et leggings fanny pack, elit bespoke vinyl art party Pitchfork selfies master cleanse.</p>
-									<p></p>
-									<div class="one_half " style="">
-										<div class="animate_counter_wrapper">
-											<div id="15041836011113148125" class="odometer" style="font-size:60px;line-height:60px;">0</div>
-											<div class="count_separator">
-												<span></span>
-											</div>
-											<div class="counter_subject">Total Rental</div>
-										</div>
-									</div>
-									<div class="one_half last " style="">
-										<div class="animate_counter_wrapper">
-											<div id="150418360152488534" class="odometer" style="font-size:60px;line-height:60px;">0</div>
-											<div class="count_separator">
-												<span></span>
-											</div>
-											<div class="counter_subject">Happy Customers</div>
-										</div>
-									</div>
+									<p></p>	
 									<p>
 										<br class="clear"/>
 									</p>

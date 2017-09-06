@@ -2,8 +2,7 @@
 <html lang="en-US"  data-menu="leftalign">
 	<head>
 		<link rel="shortcut icon" href="images/TG-Thumb.png" />
-		<title>Grand Car Rental | Limousine Car Rental WordPress &#8211; Just another WordPress site</title>
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<title>Grand Car Rental | Limousine Car Rental WordPress &#8211; Just another WordPress site</title>		
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -127,7 +126,7 @@ if(isset($_POST['search']))
 							while($fetch_query = mysqli_fetch_array($select_query)){
 							?>
 							<div class="element grid classic3_cols animated1">
-							<a href="product.php?id=<?php echo $fetch_query['category_id'];?>" style="color:white;">
+							<a href="product.php?cat=<?php echo $fetch_query['category_id'];?>" style="color:white;">
 								<div class="one_third gallery3 grid static filterable portfolio_type themeborder" style="background-image:url(admin/uploads/<?php echo $fetch_query['category_image'];?>);">									
 									<div class="portfolio_info_wrapper">
 										<h3><?php echo $fetch_query['category_name'];?></h3>

@@ -108,8 +108,20 @@ include ("header.php");
 						<div class="standard_wrapper">
 							<div id="portfolio_filter_wrapper" class="gallery classic two_cols portfolio-content section content clearfix" data-columns="3">
 										<?php
-											$fetch_sub_cat_id = $_GET['id'];
-											$subcat_details = mysqli_query($mysqli,"select * from service where sub_cat_id = '$fetch_sub_cat_id' " );
+											
+											if(isset($_GET['id'])){
+												$fetch_sub_cat_id = $_GET['id'];
+
+												$data = "select * from service where sub_cat_id = '$fetch_sub_cat_id'";
+											}
+											else if(isset($_GET['key'])){
+												$cat = $_GET['cat'];
+												$sub_cat = $_GET['sub_cat'];
+												$key = $_GET['key'];
+
+												$data = "select * from service where category_id = '$cat' and sub_cat_id = '$sub_cat' and service_name like '%".$key."%'";
+											}
+											$subcat_details = mysqli_query($mysqli,$data);
 											while($fetch_details = mysqli_fetch_array($subcat_details))
 												{
 										?>

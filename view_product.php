@@ -67,16 +67,29 @@ include ("header.php");
 					<div class="sidebar_content full_width">
 						<div id="product-2676" class="post-2676 product type-product status-publish has-post-thumbnail product_tag-car first instock shipping-taxable purchasable product-type-simple">
 							<div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4" style="">
+
+										<?php
+											$fetch_service_id = $_GET['id'];
+											$service_details = mysqli_query($mysqli,"select * from service where service_id = '$fetch_service_id' " );
+											$fetch_details = mysqli_fetch_array($service_details);
+												
+										?>
+
 								<figure class="woocommerce-product-gallery__wrapper">
 									<div>
+									<?php
+										$image_id=$fetch_details['service_id'];
+										$service_image = mysqli_query($mysqli,"select * from service_image where service_id = '$image_id' " );
+										$fetch_images = mysqli_fetch_array($service_image);
+									?>
 										<a href="#">
-											<img width="600" height="600" src="images/Dental.jpg" class="attachment-shop_single size-shop_single wp-post-image" alt="" title="Dental" />
+											<img width="600" height="600" src="admin/uploads/<?php echo $fetch_images['service_image'];?>" class="attachment-shop_single size-shop_single wp-post-image" alt="" title="" />
 										</a>
 									</div>
 								</figure>
 							</div>
 							<div class="summary entry-summary">
-								<h1 class="product_title entry-title">Dental</h1>
+								<h1 class="product_title entry-title"><?php echo $fetch_details['service_name'];?></h1>
 								<div class="woocommerce-product-rating">
 									<div class="star-rating">
 										<span style="width:70%">
@@ -91,23 +104,18 @@ include ("header.php");
 								</div>
 								<p class="price">
 									<span class="woocommerce-Price-amount amount">
-										<span class="woocommerce-Price-currencySymbol">&#36;</span>39,000.00
+										<span class="woocommerce-Price-currencySymbol">&#36;</span><?php echo $fetch_details['price'];?>
 									</span>
 								</p>
 								<div class="woocommerce-product-details__short-description">
-									<p>Find the exact equipment you need and tell us when and where you need it....</p>
+									<p><?php echo substr($fetch_details['description'],0,100);?>....</p>
 								</div>
 								<form class="cart" method="post" enctype='multipart/form-data'>
 									<div class="quantity">
 										<input type="number" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" />
 									</div>
 									<button type="submit" name="add-to-cart" value="2676" class="single_add_to_cart_button button alt">Add to cart</button>
-								</form>
-								<div class="product_meta">
-									<span class="tagged_as">Tag: 
-										<a href="#" rel="tag">Equipment</a>
-									</span>
-								</div>
+								</form>								
 							</div>
 							<!-- .summary -->
 							<div class="woocommerce-tabs wc-tabs-wrapper">
@@ -117,65 +125,44 @@ include ("header.php");
 									</li>
 								</ul>
 								<div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">
-									<p>Benefits for the dentists:Precise incision, excision, ablation, Practice growth and differentiation ,Quality of work, Clean, clear operating field, Reduced stress, Greater through-put of patients, Increment revenue, Greater efficiency, Fiber provides better access,Versatile tool for several application.</p>
-									<p>Since lasers was applied to dental treatment, more superiority of lasers is changing the game in the realm of modern dentistry, dentists use laser perform more procedures, less time, better results. Patients benefit from faster treatment, shorter healing times with lessoverall discomfort, painless, silent treatment condition.</p>
+									<p><?php echo $fetch_details['description']?></p>									
 								</div>
 							</div>
-							<section class="related products">
+							<section class="related products">										
 								<h2>Related products</h2>
+							
 								<ul class="products">
-									<li class="post-2680 product type-product status-publish has-post-thumbnail product_tag-car first instock shipping-taxable purchasable product-type-simple">
-										<a href="#" class="woocommerce-LoopProduct-link">
-											<img src="images/Compaction.jpg" style="height:220px;"class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="BMW_Z4_FMA_1600x747" title="BMW_Z4_FMA_1600x747" />
-											<h2 class="woocommerce-loop-product__title">Equipment</h2>
+									<?php											
+											$subcat_details = mysqli_query($mysqli,"select * from service limit 3" );
+											while($fetch_details = mysqli_fetch_array($subcat_details))
+												{
+										?>
+									<li class="post-2680 product type-product status-publish has-post-thumbnail product-type-simple" style="height:400px;width:360px !important;">							
+											<?php
+												$image_id=$fetch_details['service_id'];
+												$service_img = mysqli_query($mysqli,"select * from service_image where service_id = '$image_id' " );
+												$fetch_img = mysqli_fetch_array($service_img);
+											?>
+										<a href="view_product.php?id=<?php echo $fetch_details['service_id'];?>" class="woocommerce-LoopProduct-link">
+											<img src="admin/uploads/<?php echo $fetch_img['service_image'];?>" style="height:220px;"class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" />
+											<h2 class="" style="font-size:15px;"><a href="view_product.php?id=<?php echo $fetch_details['service_id'];?>"><?php echo	
+												$fetch_details['service_name'];?></a></h2>											
 											<div class="star-rating" title="Rated 4.00 out of 5">
 												<span style="width:80%">
 													<strong class="rating">4.00</strong> out of 5
 												</span>
 											</div>
 											<span class="price">
-												<span class="woocommerce-Price-amount amount">
+												<span class="woocommerce-Price-amount amount" >
 													<span class="woocommerce-Price-currencySymbol">&#36;</span>45,000.00
 												</span>
 											</span>
-										</a>
-										<a rel="nofollow" href="#">Add to cart</a>
+										</a>										
 									</li>
-									<li class="post-2682 product type-product status-publish has-post-thumbnail product_tag-car  instock shipping-taxable purchasable product-type-simple">
-										<a href="#" class="woocommerce-LoopProduct-link">
-											<img width="300" height="300" src="images/Electronic-Test-Equipment-Sales.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="2016-bmw-7-series-exterior-images-1900x1200-07" title="2016-bmw-7-series-exterior-images-1900x1200-07" />
-											<h2 class="woocommerce-loop-product__title">Electronic</h2>
-											<div class="star-rating" title="Rated 5.00 out of 5">
-												<span style="width:100%">
-													<strong class="rating">5.00</strong> out of 5
-												</span>
-											</div>
-											<span class="price">
-												<span class="woocommerce-Price-amount amount">
-													<span class="woocommerce-Price-currencySymbol">&#36;</span>99,000.00
-												</span>
-											</span>
-										</a>
-										<a rel="nofollow" href="#">Add to cart</a>
-									</li>
-									<li class="post-2679 product type-product status-publish has-post-thumbnail product_tag-car last instock shipping-taxable purchasable product-type-simple">
-										<a href="#" class="woocommerce-LoopProduct-link">
-											<img width="300" height="300" src="images/Product-Type_20160115-152106.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="The road to success and the road to failure are almost exactly the same" title="2017-lexus-ls-460-2" />
-											<h2 class="woocommerce-loop-product__title">Electrical</h2>
-											<div class="star-rating" title="Rated 3.00 out of 5">
-												<span style="width:60%">
-													<strong class="rating">3.00</strong> out of 5
-												</span>
-											</div>
-											<span class="price">
-												<span class="woocommerce-Price-amount amount">
-													<span class="woocommerce-Price-currencySymbol">&#36;</span>45,000.00
-												</span>
-											</span>
-										</a>
-										<a rel="nofollow" href="#">Add to cart</a>
-									</li>
-								</ul>
+											<?php
+												}
+											?>
+								</ul>								
 							</section>
 						</div>
 						<!-- #product-2676 -->

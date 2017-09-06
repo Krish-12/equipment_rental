@@ -3,6 +3,7 @@
 	<head>
 		<link rel="shortcut icon" href="images/TG-Thumb.png" />
 		<title>Grand Car Rental | Limousine Car Rental WordPress &#8211; Just another WordPress site</title>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -49,6 +50,15 @@ include("metalinks.php");
 		<!-- Begin mobile menu -->
 		<?php
 include ("header.php");
+if(isset($_POST['search']))
+{
+	$cat = mysqli_real_escape_string($mysqli,$_POST['cat']);
+	$sub_cat = mysqli_real_escape_string($mysqli,$_POST['sub_cat']);
+	$key_words = mysqli_real_escape_string($mysqli,$_POST['key_words']);
+
+	echo "<script>window.location.href='sub_product.php?cat=$cat&&sub_cat=$sub_cat&&key=$key_words'</script>";
+}
+
 ?>
 		<div class="ppb_wrapper  ">
 			<div  class="one withsmallpadding ppb_car_search_background parallax withbg " style="padding-top: 150px !important;text-align:center;height:500px;background-image:url(images/manufacturing-slide01.jpg);background-position: center center;margin-top:40px;color:#ffffff;" >
@@ -57,42 +67,37 @@ include ("header.php");
 					<div class="inner_content">
 						<div class="standard_wrapper">
 							<h2 class="ppb_title" style="color:#ffffff;">Rent or Lease Equipments</h2>
-							<div class="page_tagline" style="color:#ffffff;">First Class Equipments Rental & Limousine Services</div>
-							<form class="car_search_form" method="get" action="car-list-right-sidebar/">
+							<div class="page_tagline" style="color:#ffffff;">First Class Equipments Rental Services</div>
+							<form class="car_search_form" method="POST">
 								<div class="car_search_wrapper">
 									<div class="one_fourth themeborder">
-										<select id="brand" name="brand">
-											<option value="">Any Brand</option>
-											<option value="Audi">Electronic</option>
-											<option value="BMW">computer</option>
-											<option value="Lexus">Electrical</option>
-											<option value="Mercedes Benz">Dental</option>
-											<option value="MINI">Laboratory</option>
-											<option value="Porsche">Construction</option>
+										<select onchange="get_subcat(this)" name="cat">
+											<option selected disabled>Choose Equipment</option>
+											<?php
+												$get_category = mysqli_query($mysqli, "select * from category");
+												while($fetch_category= mysqli_fetch_array($get_category))
+												{
+											?>
+											<option value="<?php echo $fetch_category['category_id']?>">
+												<?php echo $fetch_category['category_name']?>
+											</option>
+											<?php
+											}
+											?>
 										</select>
 										<span class="ti-angle-down"></span>
 									</div>
 									<div class="one_fourth themeborder">
-										<select id="type" name="type">
-											<option value="">Any Type</option>
-											<option value="Coupe">Electronic</option>
-											<option value="Sedan">computer</option>
-											<option value="SUV">Laboratory</option>
+										<select class="cat_id" name="sub_cat" id="value">
+											<option selected disabled>Choose Equipment Type</option>
 										</select>
 										<span class="ti-angle-down"></span>
 									</div>
 									<div class="one_fourth themeborder">
-										<select id="sort_by" name="sort_by">
-											<option value="price_low">Price Low to High</option>
-											<option value="price_high">Price High to Low</option>
-											<option value="model">Sort By Model</option>
-											<option value="popular">Sort By Popularity</option>
-											<option value="review">Sort By Review Score</option>
-										</select>
-										<span class="ti-exchange-vertical"></span>
+										<input type="text" name="key_words" placeholder="Type Here">										
 									</div>
 									<div class="one_fourth last themeborder">
-										<input id="car_search_btn" type="submit" class="button" value="Search"/>
+										<input type="submit" class="button" name="search" value="Search"/>
 									</div>
 								</div>
 							</form>
@@ -105,8 +110,8 @@ include ("header.php");
 					<div class="page_content_wrapper">
 						<div class="inner">
 							<div style="margin:auto;width:100%">
-								<h2 class="ppb_title" style="">First Class Equipments Rental &amp; Limousine Services</h2>
-								<div class="page_tagline" style="">We offer professional Equipments rental &amp; limousine services in our range of high-end Instruments</div>
+								<h2 class="ppb_title" style="">First Class Equipments Rental &amp; Best Services</h2>
+								<div class="page_tagline" style="">We offer professional Equipments rental &amp; Best services in our range of high-end Instruments</div>
 							</div>
 						</div>
 					</div>
@@ -303,7 +308,27 @@ include ("header.php");
 	<?php
 include ("footer.php");
 ?>
+		<script>
+			function get_subcat(e){
+				var affiliate_id = $(e).val();
+
+				$.ajax({
+				  type: 'post',
+				  url: 'ajax_subcat.php',
+				  data:{
+					catid:affiliate_id
+				  },
+				  success: function (response){
+				  document.getElementById("value").innerHTML=response;
+				
+				 }
+				});
+							}
+		</script>
 </div>
+
+						
+
 <script type="text/javascript">(function() {function addEventListener(element,event,handler) {
 	if(element.addEventListener) {
 		element.addEventListener(event,handler, false);

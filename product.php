@@ -48,6 +48,15 @@ include("metalinks.php");
 		<div id="wrapper" class="hasbg transparent">
 			<?php
 include ("header.php");
+if(isset($_POST['search']))
+{
+	$cat = mysqli_real_escape_string($mysqli,$_POST['cat']);
+	$sub_cat = mysqli_real_escape_string($mysqli,$_POST['sub_cat']);
+	$key_words = mysqli_real_escape_string($mysqli,$_POST['key_words']);
+
+	echo "<script>window.location.href='sub_product.php?cat=$cat&&sub_cat=$sub_cat&&key=$key_words'</script>";
+}
+
 ?>
 			<div id="page_caption" class="hasbg parallax  withtopbar  " style="background-image:url(images/sony-surgical-camera-compatible-HDMD-1080P.jpg);height:500px;" >
 				<div class="page_title_wrapper">

@@ -167,16 +167,14 @@ include ("header.php");
 
 										<tr>
 										<tr>
-										<td colspan="3" class="actions">
+										<td colspan="2" class="actions">
 												<div class="coupon" style="float:left;padding-right:9%;">
 													<b> Date : 09/04/2017</b>
 												</div>
 											</td>
-											<td colspan="6" class="actions">
+											<td colspan="4" class="actions">
 												<div class="coupon" style="float:right;padding-right:9%;">
-													<b> Total</b>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>&#36;39,000,00</b>
+													<b> Total : &#36;39,000,00</b>
 												</div>
 											</td>
 										</tr>
@@ -285,16 +283,14 @@ include ("header.php");
 
 										<tr>
 										<tr>
-										<td colspan="3" class="actions">
+										<td colspan="2" class="actions">
 												<div class="coupon" style="float:left;padding-right:9%;">
 													<b> Date : 09/04/2017</b>
 												</div>
 											</td>
-											<td colspan="3" class="actions">
+											<td colspan="4" class="actions">
 												<div class="coupon" style="float:right;padding-right:9%;">
-													<b> Total</b>
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<b>&#36;39,000,00</b>
+													<b> Total : &#36;39,000,00</b>
 												</div>
 											</td>
 										</tr>

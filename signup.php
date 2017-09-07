@@ -9,13 +9,23 @@ if(isset($_POST['submit']))
 	$password=$_POST['password'];
 	$phone=$_POST['phone'];
 	$category=$_POST['category'];
+	$status = $_POST['status'];
 
+
+	if($category=='supplier')
+	{
+		$status='pending';
+	}
+	else if($category=='rental')
+	{
+		$status='active';
+	}
 	$select_email = mysqli_query($mysqli,"select * from users where email='".$email."'");
 	$fetch_details = mysqli_num_rows($select_email);
 	if($fetch_details=='0')
 	 {
 	
-	$insert_details = mysqli_query($mysqli,"insert users values('','".$fname."','".$lname."','".$phone."','".$email."','".$password."','".$category."','ACTIVE','')");
+	$insert_details = mysqli_query($mysqli,"insert users values('','".$fname."','".$lname."','".$phone."','".$email."','".$password."','".$category."','".$status."','".$category."')");
 	if($insert_details)
 	{
 		$data = "success";
@@ -305,8 +315,8 @@ include("metalinks.php");
 														<abbr class="required" title="required">*</abbr>
 													</label>
 													<select name="category" REQUIRED>
-															<option value="">Choose Category...</option>
-															<option value="suppliers">Suppliers</option>
+															<option selected disabled>Choose Category...</option>
+															<option value="supplier">Suppliers</option>
 															<option value="rental">Rental</option>
 													</select>
 												</p>

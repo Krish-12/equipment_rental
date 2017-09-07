@@ -95,14 +95,14 @@ $id = mysqli_query($mysqli,"select * from users");
                                             </tr>
                                         </thead>
 										<tbody id="all_data">
-											<tr>
-											<?php
-											$i= 1;
-											$query = mysqli_query($mysqli,"select * from users where user_type != 'ADMIN'");
-											
+										<?php
+												$i= 1;
+												$query = mysqli_query($mysqli,"select * from users where user_type !='admin'and user_type='supplier' and status='inactive'");
 												while($fetch_details = mysqli_fetch_array($query))
 												{
 												?>
+											<tr>
+												
 												<td><?php echo $i;?></td>
 												<td><?php echo $fetch_details['fname'];?>&nbsp;&nbsp;<?php echo $fetch_details['lname'];?></td>
 												<td><?php echo $fetch_details['email'];?></td>
@@ -111,18 +111,20 @@ $id = mysqli_query($mysqli,"select * from users");
 												<td><?php echo $fetch_details['category'];?></td>
 												<td><?php echo $fetch_details['status'];?></td>
 												<td>
-													<button class="btn green btn-outline sbold uppercase" onclick="change_status();"><?php echo (($fetch_details['status']=='ACTIVE')?'INACTIVE':'ACTIVE');?></button>
-													<input type="hidden" value="<?php echo $fetch_details['status']?>" class="stat">
-													<input type="hidden" value="<?php echo $fetch_details['id']?>" class="user_id">
+												<?php
+												$function = "change_status('".$fetch_details['id']."','".$fetch_details['status']."')";
+												?>
+													<button class="btn green btn-outline sbold uppercase" onclick="<?php echo $function;?>"><?php echo (($fetch_details['status']=='active')?'inactive':'active');?></button>
 												</td>
 												<td >
 													<a href="?delete_id=<?php echo $fetch_details['id']?>" class="btn red btn-outline sbold uppercase">Delete</a>
 												</td>
-												<?php
+												
+											</tr>
+											<?php
 											$i++;
 												}
 												?>
-											</tr>
 											
 										</tbody>
                                       
@@ -140,12 +142,9 @@ $id = mysqli_query($mysqli,"select * from users");
         <!-- END CONTAINER -->
         <?php include('footer.php') ?>
 		<script>
-		function change_status()
+		function change_status(val1,val2)
 		{
-			var stat = $('.stat').val();
-			var user_id = $('.user_id').val();
-			$.post("ajax_status.php", {status: stat,user_id: user_id}, function(result){
-				//alert(result);
+			$.post("ajax_status1.php", {status: val2,user_id: val1}, function(result){
 				$("#all_data").html(result);
 			});
 		}

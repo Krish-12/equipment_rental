@@ -1,20 +1,20 @@
 <?php
 include("config.php");
 $status = $_POST['status'];
-if($status == 'active')
-{
-	$result = "inactive";
-}
-else if($status == 'inactive')
+if($status == 'pending')
 {
 	$result = "active";
+}
+else if($status == 'active')
+{
+	$result = "inactive";
 }
 $user_id = $_POST['user_id'];
 $update_query = mysqli_query($mysqli,"update users set status='$result' where id='$user_id'");
 if($update_query)
 {
 	$i= 1;
-	$query = mysqli_query($mysqli,"select * from users where user_type != 'admin'and user_type='supplier' and status='active'");
+	$query = mysqli_query($mysqli,"select * from users where user_type != 'admin'and user_type='supplier' and status='pending'");
 
 		while($fetch_details = mysqli_fetch_array($query))
 		{
@@ -32,7 +32,7 @@ if($update_query)
 	<?php
 	$function = "change_status('".$fetch_details['id']."','".$fetch_details['status']."')";
 	?>
-		<button class="btn green btn-outline sbold uppercase" onclick="<?php echo $function;?>"><?php echo (($fetch_details['status']=='active')?'inactive':'active');?></button>
+		<button class="btn green btn-outline sbold uppercase" onclick="<?php echo $function;?>"><?php echo (($fetch_details['status']=='pending')?'active':'inactive');?></button>
 	</td>
 	<td >
 		<a href="?delete_id=<?php echo $fetch_details['id']?>" class="btn red btn-outline sbold uppercase">Delete</a>

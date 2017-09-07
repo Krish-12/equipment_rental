@@ -5,18 +5,23 @@ if(isset($_POST['submit']))
 {
 	$username = $_POST['Username'];
 	$password = $_POST['Password'];
-	$something_query = mysqli_query($mysqli,"select * from users where email ='".$username."' and password='".$password."' and status='ACTIVE'");
+	$something_query = mysqli_query($mysqli,"select * from users where email ='".$username."' and password='".$password."' and status='active'");
 	$fetch_details = mysqli_fetch_array($something_query);
 	$check_rows = mysqli_num_rows($something_query);
 
 	if($check_rows > 0)
 	{
 		$_SESSION['user_id']= $fetch_details['id'];
-		$data = "success";
+		$fetch_id = $_SESSION['user_id'];
+		$cheak_users_type=mysqli_query($mysqli,"select * from users where id='".$fetch_id."'");
+		$fecth_users_status = mysqli_fetch_array($cheak_users_type);
+
+		if($fecth_users_status['user_type']=='rental'){
 		echo "<script>window.location.href='index.php'</script>";
-	}
-	else
-	{
+		}else{
+		echo "<script>window.location.href='admin/dashboard.php'</script>";
+		}	
+	}else{
 		$data = "error";
 	}	
 }

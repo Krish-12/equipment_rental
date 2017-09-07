@@ -14,7 +14,7 @@ $update_query = mysqli_query($mysqli,"update users set status='$result' where id
 if($update_query)
 {
 	$i= 1;
-	$query = mysqli_query($mysqli,"select * from users where user_type != 'admin'and user_type='supplier' and status='active'");
+	$query = mysqli_query($mysqli,"select * from users where user_type != 'admin'and user_type='supplier' and status='inactive'");
 
 		while($fetch_details = mysqli_fetch_array($query))
 		{

@@ -13,7 +13,7 @@
 		move_uploaded_file($tmp_image,"uploads/".$save_image);
 		$ser_price =mysqli_real_escape_string($mysqli,$_POST['price']);
 		
-		$add_ser= mysqli_query($mysqli, "INSERT INTO service VALUES('','".$cat_name."','".$sub_cat_name."','".$ser_name."','".$ser_desc."','".$ser_price."')");
+		$add_ser= mysqli_query($mysqli, "INSERT INTO service VALUES('','".$cat_name."','".$sub_cat_name."','".$ser_name."','".$ser_desc."','".$ser_price."','pending')");
 		if($add_ser){
 			$last_ser_id = mysqli_insert_id($mysqli);
 			for($i=0 ; $i<sizeof($image) ; $i++){

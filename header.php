@@ -1,6 +1,3 @@
-<?php
-	include("connection.php");	
-?>
 <div class="mobile_menu_wrapper">
 	<a id="mobile_menu_close" href="javascript:;" class="button">
 		<span class="ti-close"></span>

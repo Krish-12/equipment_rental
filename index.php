@@ -20,6 +20,7 @@ img.emoji {
 #rs-demo-id {}
 </style>
 		<?php
+		include("connection.php");
 include("metalinks.php");
 ?>
 	</head>

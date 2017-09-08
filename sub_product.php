@@ -18,6 +18,7 @@ img.emoji
 }
 </style>
 <?php
+	include("connection.php");
 	include("metalinks.php");
 ?>
 	</head>

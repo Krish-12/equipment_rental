@@ -111,7 +111,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="copyright">Copyright © 2017 ClickRstop All Rights Reserved. Designed By ClickRstop</div>
+					<div id="copyright">Copyright &copy; 2017 ClickRstop All Rights Reserved. Designed By ClickRstop</div>
 					<br class="clear"/>
 					<a id="toTop" href="javascript:;">
 						<i class="fa fa-angle-up"></i>

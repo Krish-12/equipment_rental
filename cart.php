@@ -44,7 +44,21 @@ include("metalinks.php");
 		<input type="hidden" id="pp_footer_style" name="pp_footer_style" value="3"/>
 		<!-- Begin mobile menu -->
 		<?php
+		include("connection.php");
 include ("header.php");
+if(isset($_GET['removepro']) && $_GET['removepro'] != '')
+	{
+		$removepro_id = $_GET['removepro'];
+		unset($_SESSION['yo_cart'][$removepro_id]);
+		echo "<script>window.location.href='cart.php'</script>";
+	}
+
+		if(isset($_POST['qty']))
+	{
+		$qty = $_POST['qty'];
+		$sid = $_POST['service_id'];
+		$_SESSION['yo_cart'][$sid] = $qty;
+	}
 ?>
 		<div id="page_caption" class="hasbg parallax  withtopbar  " style="background-image:url(images/Dental.jpg);height:500px;">
 			<div class="page_title_wrapper">
@@ -61,7 +75,7 @@ include ("header.php");
 				<!-- Begin main content -->
 				<div class="inner_wrapper">
 					<div class="sidebar_content full_width">
-						<div class="woocommerce">
+						<div class="woocommerce" style="padding-bottom:40px !important;">
 						<?php
 							if(sizeof($_SESSION['yo_cart']) > 0)
 							{
@@ -97,7 +111,7 @@ include ("header.php");
 									?>
 										<tr class="woocommerce-cart-form__cart-item cart_item">
 											<td class="product-remove">
-												<a href="view_product.php" class="remove" aria-label="Remove this item" data-product_id="2676" data-product_sku="">&times;</a>
+												<a href="?removepro=<?php echo $key;?>" class="remove" aria-label="Remove this item" data-product_id="2676" data-product_sku="">&times;</a>
 											</td>
 											<td class="product-thumbnail">
 												<a href="#">

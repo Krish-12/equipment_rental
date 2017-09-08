@@ -56,7 +56,7 @@
 								
                             </ul>
                         </li>
-						  <li class="nav-item <?php if($page_name == 'add_sub_category.php' || $page_name == 'view_sub_category.php') { ?>active open<?php } ?> ">
+						 <li class="nav-item <?php if($page_name == 'add_sub_category.php' || $page_name == 'view_sub_category.php') { ?>active open<?php } ?> ">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-pointer"></i>
                                 <span class="title">Sub Category</span>
@@ -116,8 +116,8 @@
                                 </a>
                          </li>
 						
-						<li class="nav-item <?php if($page_name == 'order.php' || $page_name == 'order.php') { ?>open<?php } ?> ">
-                              <a href="order.php" class="nav-link nav-toggle">
+						<li class="nav-item <?php if($page_name == 'orders.php' || $page_name == 'orders.php') { ?>open<?php } ?> ">
+                              <a href="orders.php" class="nav-link nav-toggle">
 									<i class="icon-compass"></i>
                                      <span class="title">Orders</span>
                                 </a>

@@ -100,13 +100,18 @@ else
 												<thead>
 													<tr>
 														<th class="all">Sl. No.</th>
-														<!--<th class="all">Name</th><th class="none">Contact No.</th><th class="none">Email</th>-->
-														<th class="all">Image</th>
+														<th class="all">Name</th>
+														<th class="none">Contact No.</th>
+														<th class="none">Email</th>
+														<th class="none">Address</th>
+														<th class="none">Town</th>
+														<th class="none">State</th>
+														<th class="none">Country</th>
+														<th class="none">Zip</th>
 														<th class="all">Service Name</th>
 														<th class="all">Price</th>
 														<th class="all">Quantity</th>
 														<th class="all">Total</th>
-														<th class="all">Status</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -119,18 +124,19 @@ else
 														<td style="padding:20px;">
 															<?php echo $i;?>
 														</td>
-														<td>
-															<img src="uploads/
-																<?php echo $fetch_details['image'];?>"
-																	style="height:65px;width:65px;">
-																					</td>
-															<td style="padding:20px;">
-																<?php echo $fetch_details['service'];?>
-															</td>
-															<td style="padding:20px;"><?php echo $fetch_details['price'];?></td>							<td style="padding:20px;"><?php echo $fetch_details['quantity'];?></td>
-															<td style="padding:20px;"><?php echo $fetch_details['total'];?></td>
-															<td style="padding:20px;"><?php echo $fetch_details['status'];?></td>
-														</tr>
+														<td style="padding:20px;"><?php echo $fetch_details['fname'];?>&nbsp;&nbsp;<?php echo $fetch_details['lname'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['phone'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['email'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['address'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['town'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['state'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['country'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['zip'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['service'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['price'];?></td>							
+														<td style="padding:20px;"><?php echo $fetch_details['quantity'];?></td>
+														<td style="padding:20px;"><?php echo $fetch_details['total'];?></td>
+													</tr>
 													<?php
 														$i++;
 													}

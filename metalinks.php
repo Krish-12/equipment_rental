@@ -1,3 +1,5 @@
+<link rel="shortcut icon" href="images/TG-Thumb.png" />
+
 <link rel='stylesheet' id='contact-form-7-css'  href='css/styles.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='fontawesome-stars-css'  href='css/fontawesome-stars-o.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='dashicons-css'  href='css/dashicons.min.css' type='text/css' media='all' />

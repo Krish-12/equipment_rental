@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
-	<head>
-		<link rel="shortcut icon" href="images/TG-Thumb.png" />
-		<title>Car 4 Columns Classic &#8211; Grand Car Rental | Limousine Car Rental WordPress</title>
+	<head>		
+		<title>Rentalz</title>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji 
@@ -176,11 +175,9 @@ img.emoji
 												$service_image = mysqli_query($mysqli,"select * from service_image where service_id = '$image_id' " );
 												$fetch_images = mysqli_fetch_array($service_image);
 											?>
-											<a class="car_image" href="view_product.php?id=
-												<?php echo $fetch_details['service_id'];?>">
-												<img src="admin/uploads/
-													<?php echo $fetch_images['service_image'];?>"style="height:230px;" alt="" />
-												</a>
+											<a class="car_image" href="view_product.php?id=<?php echo $fetch_details['service_id'];?>">
+												<img src="admin/uploads/<?php echo $fetch_images['service_image'];?>"style="height:230px;" alt="" />
+											</a>
 											</div>
 											<div class="two_third last">
 												<div class="car_attribute_wrapper">

@@ -1,10 +1,7 @@
-
-
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
 	<head>
-		<link rel="shortcut icon" href="images/TG-Thumb.png" />
-		<title>Car 4 Columns Classic &#8211; Grand Car Rental | Limousine Car Rental WordPress</title>
+		<title>Rentalz</title>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -47,6 +44,13 @@ include("metalinks.php");
 		<input type="hidden" id="pp_footer_style" name="pp_footer_style" value="3"/>
 		<?php
 include ("header.php");
+if(isset($_POST['add_cart']))
+{
+	$quantity = $_POST['quantity'];
+	$service_id = $_GET['id'];
+	$_SESSION['yo_cart'][$service_id] = $quantity;
+	echo "<script>window.location.href='view_product.php?id=$service_id'</script>";
+}
 ?>
 		<div id="page_caption" class="hasbg parallax  withtopbar  " style="background-image:url(images/Dental.jpg);height:500px;" >
 			<div class="page_title_wrapper">
@@ -112,9 +116,9 @@ include ("header.php");
 								</div>
 								<form class="cart" method="post" enctype='multipart/form-data'>
 									<div class="quantity">
-										<input type="number" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" />
+										<input type="number" class="input-text qty text" step="1" min="1" max="" name="quantity"  value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" />
 									</div>
-									<button type="submit" name="add-to-cart" value="2676" class="single_add_to_cart_button button alt">Add to cart</button>
+									<button type="submit" name="add_cart" class="single_add_to_cart_button button alt">Add to cart</button>
 								</form>								
 							</div>
 							<!-- .summary -->
@@ -132,10 +136,12 @@ include ("header.php");
 								<h2>Related products</h2>
 							
 								<ul class="products">
-									<?php											
-											$subcat_details = mysqli_query($mysqli,"select * from service limit 3" );
-											while($fetch_details = mysqli_fetch_array($subcat_details))
-												{
+									<?php	
+										$get_subcat = mysqli_query($mysqli,"select * from service where service_id='".$_GET['id']."'");
+										$fetch_subcat = mysqli_fetch_array($get_subcat);
+										$subcat_details = mysqli_query($mysqli,"select * from service where sub_cat_id='".$fetch_subcat['sub_cat_id']."'limit 3" );
+										while($fetch_details = mysqli_fetch_array($subcat_details))
+											{
 										?>
 									<li class="post-2680 product type-product status-publish has-post-thumbnail product-type-simple" style="height:400px;width:360px !important;">							
 											<?php
@@ -192,9 +198,4 @@ var wc_add_to_cart_params = {"ajax_url":"\/grandcarrental\/demo\/wp-admin\/admin
 /* ]]> */
 
 	</script>
-</body>undefined</html>undefined<!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
-
-Page Caching using disk: enhanced
-Content Delivery Network via themegoodsthemes-pzbycso8wng.stackpathdns.com
-
- Served from: themes.themegoods.com @ 2017-08-31 08:13:22 by W3 Total Cache -->
+</body></html>

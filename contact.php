@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
 	<head>
-		<title>Cart &#8211; Grand Car Rental | Limousine Car Rental WordPress</title>
+		<title>Rentalz</title>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -208,9 +207,6 @@ include ("header.php");
 <br class="clear"/>
 <?php
 include ("footer.php");
-?>undefined</body>undefined</html>undefined<!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
-
-Page Caching using disk: enhanced
-Content Delivery Network via themegoodsthemes-pzbycso8wng.stackpathdns.com
-
- Served from: themes.themegoods.com @ 2017-08-31 12:50:48 by W3 Total Cache -->
+?>
+</body>
+</html>

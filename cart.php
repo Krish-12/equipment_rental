@@ -1,10 +1,7 @@
-
-
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
-	<head>
-		<link rel="shortcut icon" href="http://themegoodsthemes-pzbycso8wng.stackpathdns.com/grandcarrental/demo/wp-content/uploads/2017/01/TG-Thumb.png" />
-		<title>Cart &#8211; Grand Car Rental | Limousine Car Rental WordPress</title>
+	<head>		
+		<title>Rentalz</title>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -65,6 +62,10 @@ include ("header.php");
 				<div class="inner_wrapper">
 					<div class="sidebar_content full_width">
 						<div class="woocommerce">
+						<?php
+							if(sizeof($_SESSION['yo_cart']) > 0)
+							{
+						?>
 							<form class="woocommerce-cart-form" action="" method="post">
 								<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 									<thead>
@@ -75,44 +76,64 @@ include ("header.php");
 											<th class="product-price">Price</th>
 											<th class="product-quantity">Quantity</th>
 											<th class="product-subtotal">Total</th>
+											<th class="product-action">Action</th>
 										</tr>
 									</thead>
 									<tbody>
+									<?php
+									$totalzz = 0;
+									foreach($_SESSION['yo_cart'] As $key => $value)
+									{
+										if(isset($_POST['cart_update'.$key.'']))
+										{
+											$quantity = $_POST['qty'.$key.''];
+											$_SESSION['yo_cart'][$key]=$quantity;
+
+											echo "<script>window.location.href='cart.php'</script>";
+										}
+
+										$select_service = mysqli_query($mysqli,"select * from service join service_image where service.service_id=service_image.service_id and service.service_id='$key'");
+										$fetch_service = mysqli_fetch_array($select_service);
+									?>
 										<tr class="woocommerce-cart-form__cart-item cart_item">
 											<td class="product-remove">
 												<a href="view_product.php" class="remove" aria-label="Remove this item" data-product_id="2676" data-product_sku="">&times;</a>
 											</td>
 											<td class="product-thumbnail">
 												<a href="#">
-													<img src="images/Electronic-Test-Equipment-Sales.jpg" style="height:100px;width:100px;"class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" />
+													<img src="admin/uploads/<?php echo $fetch_service['service_image'];?>" style="height:100px;width:100px;"class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" />
 												</a>
 											</td>
 											<td class="product-name" data-title="Product">
-												<a href="#">Electronic</a>
+												<a href="#"><?php echo $fetch_service['service_name'];?></a>
 											</td>
 											<td class="product-price" data-title="Price">
 												<span class="woocommerce-Price-amount amount">
-													<span class="woocommerce-Price-currencySymbol">&#36;</span>39,000.00
+													<span class="woocommerce-Price-currencySymbol">&#36;</span><?php echo $fetch_service['price'];?>
 												</span>
 											</td>
 											<td class="product-quantity" data-title="Quantity">
 												<div class="quantity">
-													<input type="number" class="input-text qty text" step="1" min="0" max="" name="cart[d89a66c7c80a29b1bdbab0f2a1a94af8][qty]" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" />
+													<input type="number" class="input-text qty text" step="1" min="0" max="" name="qty<?php echo $key;?>" value="<?php echo $value;?>" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric" />
 												</div>
 											</td>
 											<td class="product-subtotal" data-title="Total">
 												<span class="woocommerce-Price-amount amount">
-													<span class="woocommerce-Price-currencySymbol">&#36;</span>39,000.00
+													<span class="woocommerce-Price-currencySymbol">&#36;</span>
+													<?php
+													$total = $fetch_service['price'] * $value;
+													echo $total;
+													?>
 												</span>
 											</td>
-										</tr>
-										<tr>
-											<td colspan="6" class="actions">
-												<input type="submit" class="button" name="#" value="Update cart" />
-												<input type="hidden" id="_wpnonce" name="_wpnonce" value="05b45631f3" />
-												<input type="hidden" name="_wp_http_referer" value="#" />
+											<td class="product-action">
+												<input type="submit" class="button" name="cart_update<?php echo $key;?>" value="Update" />
 											</td>
 										</tr>
+									<?php
+										$totalzz += $fetch_service['price'] * $value;
+									}
+									?>
 									</tbody>
 								</table>
 							</form>
@@ -124,7 +145,7 @@ include ("header.php");
 											<th>Subtotal</th>
 											<td data-title="Subtotal">
 												<span class="woocommerce-Price-amount amount">
-													<span class="woocommerce-Price-currencySymbol">&#36;</span>39,000.00
+													<span class="woocommerce-Price-currencySymbol">&#36;</span><?php echo $totalzz;?>
 												</span>
 											</td>
 										</tr>
@@ -133,7 +154,7 @@ include ("header.php");
 											<td data-title="Total">
 												<strong>
 													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">&#36;</span>39,000.00
+														<span class="woocommerce-Price-currencySymbol">&#36;</span><?php echo $totalzz;?>
 													</span>
 												</strong>
 											</td>
@@ -146,6 +167,19 @@ include ("header.php");
 									</div>
 								</div>
 							</div>
+							<?php
+									}
+									else{
+										?>
+										<div id="1504684554461393832" class="alert_box notice" style="padding-bottom:20px !important;background:white;border:2px solid red;">
+										<h3 style="color:red;">
+											<i class="fa fa-exclamation-triangle"></i>Oops!!!    No Services Found
+										</h3>
+									</a>
+								</div>
+								<?php
+									}
+								?>
 						</div>
 					</div>
 				</div>

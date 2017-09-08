@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
 	<head>
-		<link rel="shortcut icon" href="images/TG-Thumb.png" />
-		<title>Grand Car Rental | Limousine Car Rental WordPress &#8211; Just another WordPress site</title>		
+		<title>Rentalz</title>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -161,7 +160,7 @@ if(isset($_POST['search']))
 							<div style="margin:auto;width:100%">
 							</p>
 							<div class="one_third " style="">
-								<span class="ti-car" style="display: block; font-size: 50px; margin-bottom: 20px;"></span>
+								<span class="ti-support" style="display: block; font-size: 50px; margin-bottom: 20px;"></span>
 							</p>
 							<h4 style="color: #fff;">Variety of Brands</h4>
 							<p>Find the exact equipment you need and tell us when and where you need it.</p>
@@ -192,8 +191,8 @@ if(isset($_POST['search']))
 	<div class="page_content_wrapper">
 		<div class="inner">
 			<div style="margin:auto;width:100%">
-				<h2 class="ppb_title" style="">Who rents and leases from US?</h2>
-				<div class="page_tagline" style="">Explore some of the best tips from around the world</div>
+				<h2 class="ppb_title" style="">Recently Added New Equipment</h2>
+				<div class="page_tagline" style="">Explore some of the best service from around the world</div>
 			</div>
 		</div>
 	</div>
@@ -206,96 +205,34 @@ if(isset($_POST['search']))
 		<div class="inner">
 			<div class="inner_wrapper">
 				<div class="blog_grid_wrapper sidebar_content full_width ppb_blog_posts">
-					<div id="post-18" class="post type-post hentry status-publish ">
+									<?php												
+										$subcat_details = mysqli_query($mysqli,"select * from service order by service_id desc limit 3" );
+										while($fetch_details = mysqli_fetch_array($subcat_details))
+											{
+									?>
+					<div class="post type-post hentry status-publish ">
 						<div class="post_wrapper grid_layout">
-							<div class="post_img small static"style="height:235px;">
-								<a href="#">
-									<img src="images/forklift-parked-near-loading-dock.jpg" alt="What To Do if Your Rental Car Has Met With An Accident" class="" />
+							<div class=""style="height:255px;width:350px;padding:10px;">
+											<?php
+												$image_id=$fetch_details['service_id'];
+												$service_img = mysqli_query($mysqli,"select * from service_image where service_id = '$image_id' " );
+												$fetch_img = mysqli_fetch_array($service_img);
+											?>
+								<a href="view_product.php?id=<?php echo $fetch_details['service_id'];?>">
+									<img src="admin/uploads/<?php echo $fetch_img['service_image'];?>"class="" alt="" />
 								</a>
 							</div>
-							<div class="post_header_wrapper">
-								<div class="post_header grid">
-									<div class="post_detail single_post">
-										<span class="post_info_date">
-											<a href="#" title="What To Do if Your Rental Car Has Met With An Accident">January 12, 2017</a>
-										</span>
-									</div>
-									<h6>
-										<a href="#" title="What To Do if Your Rental Car Has Met With An Accident">Electronics</a>
-									</h6>
+							<div class="post_header_wrapper" style="height:80px;">
+								<div class="post_header grid">									
+									<h2 class="" style="font-size:20px;"><a href="view_product.php?id=<?php echo $fetch_details['service_id'];?>"><?php echo	
+												$fetch_details['service_name'];?></a></h2>
+								</div>									
 								</div>
-								<p>Find the exact equipment you need and tell us when and where you need it....
-				
-										
-									<div class="post_button_wrapper">
-										<a class="readmore" href="#">Read More
-												
-											<span class="ti-angle-right"></span>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="post-29" class="post type-post hentry status-publish ">
-							<div class="post_wrapper grid_layout">
-								<div class="post_img small static">
-									<a href="#">
-										<img src="images/Compaction.jpg" alt="On The Trail of 6 Best Foods in North America" class=""/>
-									</a>
-								</div>
-								<div class="post_header_wrapper">
-									<div class="post_header grid">
-										<div class="post_detail single_post">
-											<span class="post_info_date">
-												<a href="#" title="On The Trail of 6 Best Foods in North America">January 10, 2017</a>
-											</span>
-										</div>
-										<h6>
-											<a href="#" title="On The Trail of 6 Best Foods in North America">On Construction</a>
-										</h6>
-									</div>
-									<p>Find the exact equipment you need and tell us when and where you need it....
-				
-											
-										<div class="post_button_wrapper">
-											<a class="readmore" href="#">Read More
-													
-												<span class="ti-angle-right"></span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div id="post-36" class="post type-post hentry status-publish last">
-								<div class="post_wrapper grid_layout">
-									<div class="post_img small static" style="height:235px;">
-										<a href="#">
-											<img src="images/Product-Type_20160115-152106.jpg" alt="Car Rental Mistakes That Can Cost You Big" class=""/>
-										</a>
-									</div>
-									<div class="post_header_wrapper">
-										<div class="post_header grid">
-											<div class="post_detail single_post">
-												<span class="post_info_date">
-													<a href="#" title="Car Rental Mistakes That Can Cost You Big">January 9, 2017</a>
-												</span>
-											</div>
-											<h6>
-												<a href="#" title="Car Rental Mistakes That Can Cost You Big">Dental</a>
-											</h6>
-										</div>
-										<p>Find the exact equipment you need and tell us when and where you need it....
-				
-												
-											<div class="post_button_wrapper">
-												<a class="readmore" href="#">Read More
-														
-													<span class="ti-angle-right"></span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
+							</div>											
+						</div>	
+											<?php
+												}
+											?>
 								<br class="clear"/>
 							</div>
 						</div>

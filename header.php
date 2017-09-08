@@ -65,7 +65,7 @@
 							<li id="text-8" class="widget widget_text">
 								<h2 class="widgettitle">For More Informations</h2>
 								<div class="textwidget">
-									<span class="ti-mobile" style="margin-right:10px;"></span>1-567-124-44227
+									<span class="ti-mobile" style="margin-right:10px;"></span>1-211-000-00000
 
 									<br/>
 									<span class="ti-alarm-clock" style="margin-right:10px;"></span>Mon - Sat 8.00 - 18.00
@@ -85,7 +85,7 @@
 					</a>
 				</li>
 				<li class="twitter">
-					<a target="_blank" href="http://twitter.com/#">
+					<a target="_blank" href="#">
 						<i class="fa fa-twitter"></i>
 					</a>
 				</li>
@@ -95,12 +95,12 @@
 					</a>
 				</li>
 				<li class="pinterest">
-					<a target="_blank" title="Pinterest" href="http://pinterest.com/#">
+					<a target="_blank" title="Pinterest" href="#">
 						<i class="fa fa-pinterest"></i>
 					</a>
 				</li>
 				<li class="instagram">
-					<a target="_blank" title="Instagram" href="http://instagram.com/">
+					<a target="_blank" title="Instagram" href="#">
 						<i class="fa fa-instagram"></i>
 					</a>
 				</li>
@@ -122,7 +122,7 @@
 							</a>
 						</li>
 						<li class="twitter">
-							<a target="_blank" href="http://twitter.com/#">
+							<a target="_blank" href="#">
 								<i class="fa fa-twitter"></i>
 							</a>
 						</li>
@@ -132,12 +132,12 @@
 							</a>
 						</li>
 						<li class="pinterest">
-							<a target="_blank" title="Pinterest" href="http://pinterest.com/#">
+							<a target="_blank" title="Pinterest" href="#">
 								<i class="fa fa-pinterest"></i>
 							</a>
 						</li>
 						<li class="instagram">
-							<a target="_blank" title="Instagram" href="http://instagram.com/">
+							<a target="_blank" title="Instagram" href="#">
 								<i class="fa fa-instagram"></i>
 							</a>
 						</li>
@@ -153,7 +153,7 @@
 					<div>
 						<div id="top_contact_number">
 							<a href="tel:1.800.456.6743">
-								<span class="ti-mobile"></span>1.800.456.6743
+								<span class="ti-mobile"></span>1-211-000-00000
 									
 							</a>
 						</div>
@@ -245,6 +245,7 @@
 							<div class="header_cart_wrapper">
 								<a href="cart.php" title="View Cart">
 									<span class="ti-shopping-cart"></span>
+									<div class="cart_count"><?php echo sizeof($_SESSION['yo_cart']); ?></div>
 								</a>
 							</div>
 						</div>

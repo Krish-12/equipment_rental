@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
-	<head>
-		<link rel="shortcut icon" href="http://themegoodsthemes-pzbycso8wng.stackpathdns.com/grandcarrental/demo/wp-content/uploads/2017/01/TG-Thumb.png" />
-		<title>Cart &#8211; Grand Car Rental | Limousine Car Rental WordPress</title>
+	<head>		
+		<title>Rentalz</title>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {

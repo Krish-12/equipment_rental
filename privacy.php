@@ -47,24 +47,20 @@ include("metalinks.php");
 include ("header.php");
 ?>
 		<div class="ppb_wrapper  ">
-			<div id="page_caption" class="hasbg parallax  withtopbar  " style="background-image:url(images/Dental.jpg);height:500px;">
+			<div id="page_caption" class="hasbg parallax  withtopbar  " style="background-image:url(images/3_privacy-policy-1.jpg);height:400px;">
 				<div class="page_title_wrapper">
 					<div class="page_title_inner">
 						<div class="page_title_content">
-							<h1 class ="withtopbar">About Us</h1>
-							<div class="page_tagline">
-			    				This is sample of page tagline and you can set it up using page option			    	
-							</div>
+							<h1 class ="withtopbar">Privacy Policy</h1>							
 						</div>
 					</div>
 				</div>
 			</div>
-			<div  class="one withsmallpadding ppb_header " style="text-align:center;padding:50px 0 50px 0;background-color:white;color:#ffffff;margin-top:-50px;" >
+			<div  class="" style="text-align:left;;background-color:white;color:#ffffff;" >
 				<div class="standard_wrapper" style="background-color:white;">
 					<div class="page_content_wrapper" style="color:black;">
 						<div class="inner">
-							<div style="margin:auto;width:50%">
-								<h2 class="ppb_title" style="color:black;">This adventure isn’t about change but it seems to be an inevitability.</h2>
+							<div style="">								
 								<div class="ppb_header_content">
 									<p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud.Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth art party deep v chillwave. Seitan High Life reprehenderit consectetur cupidatat kogi. Et leggings fanny pack, elit bespoke vinyl art party Pitchfork selfies master cleanse.</p>
 									<p></p>	

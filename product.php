@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"  data-menu="leftalign">
-	<head>
-		<link rel="shortcut icon" href="images/TG-Thumb.png" />
-		<title>Car 4 Columns Classic &#8211; Grand Car Rental | Limousine Car Rental WordPress</title>
+	<head>		
+		<title>Rentalz</title>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {

@@ -31,7 +31,7 @@
 											</a>
 										</li>
 										<li class="twitter">
-											<a target="_blank" title="Twitter" href="https://twitter.com/#">
+											<a target="_blank" title="Twitter" href="#">
 												<i class="fa fa-twitter"></i>
 											</a>
 										</li>
@@ -41,12 +41,12 @@
 											</a>
 										</li>
 										<li class="pinterest">
-											<a target="_blank" title="Pinterest" href="https://pinterest.com/#">
+											<a target="_blank" title="Pinterest" href="#">
 												<i class="fa fa-pinterest"></i>
 											</a>
 										</li>
 										<li class="instagram">
-											<a target="_blank" title="Instagram" href="https://instagram.com/">
+											<a target="_blank" title="Instagram" href="#">
 												<i class="fa fa-instagram"></i>
 											</a>
 										</li>
@@ -73,22 +73,21 @@
 	}
 })();
 </script>
-						<!-- MailChimp for WordPress v4.1.4 - https://wordpress.org/plugins/mailchimp-for-wp/ -->
+					<?php
+					if(isset($_POST['submit_email']))
+					{
+					$email =$_POST['email'];
+					$add_eamil= mysqli_query($mysqli, "insert Newsletter values('','".$email."')");
+					}
+					?>
 						<form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-27" method="post" data-id="27" data-name="Newsletter" >
-							<div class="mc4wp-form-fields">Don't miss a thing! Sign up to receive daily deals
+							<div class="mc4wp-form-fields">Subscribe to receive daily deals
 
 
-								<input type="email" name="EMAIL" placeholder="Your Email Address" required />
+								<input type="email" name="email" placeholder="Your Email Address" required />
 								<br/>
-								<input type="submit" value="Subscribe" />
-								<div style="display: none;">
-									<input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" />
-								</div>
-								<input type="hidden" name="_mc4wp_timestamp" value="1504020173" />
-								<input type="hidden" name="_mc4wp_form_id" value="27" />
-								<input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" />
-							</div>
-							<div class="mc4wp-response"></div>
+								<input type="submit" name="submit_email" value="Subscribe" />
+								
 						</form>
 						<!-- / MailChimp for WordPress Plugin -->
 					</li>
@@ -107,9 +106,12 @@
 							<li id="menu-item-3136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3136">
 								<a href="privacy.php">Privacy Policy</a>
 							</li>
+							<li id="menu-item-3136" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3136">
+								<a href="terms.php">Terms and Conditions</a>
+							</li>
 						</ul>
 					</div>
-					<div id="copyright">© Copyright Equipment Rental Theme - Theme by Clickrstop</div>
+					<div id="copyright">Copyright © 2017 ClickRstop All Rights Reserved. Designed By ClickRstop</div>
 					<br class="clear"/>
 					<a id="toTop" href="javascript:;">
 						<i class="fa fa-angle-up"></i>

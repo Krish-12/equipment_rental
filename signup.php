@@ -311,14 +311,16 @@ include("metalinks.php");
 												</p>
 
 												<p class="form-row form-row-last validate-required validate-email" id="" data-priority="110">
-													<label  class="">Choose Category 
+													<label  class="">I want to:
 														<abbr class="required" title="required">*</abbr>
 													</label>
-													<select name="category" REQUIRED>
+													<!--<select name="category" REQUIRED>
 															<option selected disabled>Choose Category...</option>
 															<option value="supplier">Suppliers</option>
 															<option value="rental">Rental</option>
-													</select>
+													</select>-->
+													<input type="radio" name="type" value="supplier">Sell my services
+													<input type="radio" name="type" value="rental">Buy services
 												</p>
 	
 										

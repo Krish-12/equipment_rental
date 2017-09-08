@@ -45,6 +45,8 @@ include("metalinks.php");
 		<!-- Begin mobile menu -->
 		<?php
 include ("header.php");
+$about= mysqli_query($mysqli,"select * from about");
+$fetch_terms= mysqli_fetch_array($about);
 ?>
 		<div class="ppb_wrapper  ">
 			<div id="page_caption" class="hasbg parallax  withtopbar  " style="background-image:url(images/Dental.jpg);height:500px;">
@@ -53,7 +55,7 @@ include ("header.php");
 						<div class="page_title_content">
 							<h1 class ="withtopbar">About Us</h1>
 							<div class="page_tagline">
-			    				This is sample of page tagline and you can set it up using page option			    	
+			    							    	
 							</div>
 						</div>
 					</div>
@@ -64,9 +66,9 @@ include ("header.php");
 					<div class="page_content_wrapper" style="color:black;">
 						<div class="inner">
 							<div style="margin:auto;width:50%">
-								<h2 class="ppb_title" style="color:black;">This adventure isn’t about change but it seems to be an inevitability.</h2>
+								<h2 class="ppb_title" style="color:black;"><?php echo $fetch_terms['header'] ?></h2>
 								<div class="ppb_header_content">
-									<p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud.Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth art party deep v chillwave. Seitan High Life reprehenderit consectetur cupidatat kogi. Et leggings fanny pack, elit bespoke vinyl art party Pitchfork selfies master cleanse.</p>
+									<p><?php echo $fetch_terms['body'] ?></p>
 									<p></p>	
 									<p>
 										<br class="clear"/>

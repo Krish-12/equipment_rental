@@ -137,6 +137,20 @@
                                     </a>
                              </li>
 
+							 <li class="nav-item <?php if($page_name == 'term.php') { ?>open<?php } ?> ">
+                                    <a href="term.php" class="nav-link nav-toggle">
+										<i class="icon-compass"></i>
+                                        <span class="title">Terms</span>
+                                    </a>
+                             </li>
+
+							 <li class="nav-item <?php if($page_name == 'privacy.php') { ?>open<?php } ?> ">
+                                    <a href="privacy.php" class="nav-link nav-toggle">
+										<i class="icon-compass"></i>
+                                        <span class="title">Privacy</span>
+                                    </a>
+                             </li>
+
 					 <?php
 					 }else if($fecth_details['user_type']=='supplier'){
 					 ?>

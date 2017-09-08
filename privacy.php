@@ -45,13 +45,15 @@ include("metalinks.php");
 		<!-- Begin mobile menu -->
 		<?php
 include ("header.php");
+$privacy= mysqli_query($mysqli,"select * from privacy");
+$fetch_terms= mysqli_fetch_array($privacy);
 ?>
 		<div class="ppb_wrapper  ">
 			<div id="page_caption" class="hasbg parallax  withtopbar  " style="background-image:url(images/3_privacy-policy-1.jpg);height:400px;">
 				<div class="page_title_wrapper">
 					<div class="page_title_inner">
 						<div class="page_title_content">
-							<h1 class ="withtopbar">Privacy Policy</h1>							
+							<h1 class ="withtopbar"><?php echo $fetch_terms['header'] ?></h1>							
 						</div>
 					</div>
 				</div>
@@ -62,10 +64,8 @@ include ("header.php");
 						<div class="inner">
 							<div style="">								
 								<div class="ppb_header_content">
-									<p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud.Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth art party deep v chillwave. Seitan High Life reprehenderit consectetur cupidatat kogi. Et leggings fanny pack, elit bespoke vinyl art party Pitchfork selfies master cleanse.</p>
-									<p></p>	
-									<p>
-										<br class="clear"/>
+									<p><?php echo $fetch_terms['body'] ?></p>
+									<br class="clear"/>
 									</p>
 								</div>
 							</div>

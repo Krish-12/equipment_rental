@@ -1,7 +1,7 @@
 <?php
 include("config.php");
 	$user_id = $_SESSION['user_id'];
-	$about_id = mysqli_query($mysqli,"select * from about");
+	$term_id = mysqli_query($mysqli,"select * from term");
 
 if(isset($_POST['submit_category']))
 
@@ -9,10 +9,10 @@ if(isset($_POST['submit_category']))
 $header =$_POST['header'];
 $body =$_POST['body'];
 
-	$add_about_details= mysqli_query($mysqli, "update about set header='".$header."',body='".$body."'where about_id='1'");
+	$add_about_details= mysqli_query($mysqli, "update term set header='".$header."',body='".$body."'where term_id='1'");
 	if($add_about_details)
 		{
-		echo "<script>window.location.href='about.php'</script>";
+		echo "<script>window.location.href='term.php'</script>";
 		}
 	else
 		{
@@ -38,7 +38,7 @@ $body =$_POST['body'];
 			<![endif]-->
 			<head>
 				<meta charset="utf-8" />
-				<title>ADMIN || About Us</title>
+				<title>ADMIN ||Term & Conditions</title>
 				<?php include('metalinks.php'); ?>
 				<style>
 		  .hidden {
@@ -68,13 +68,13 @@ $body =$_POST['body'];
 										<i class="fa fa-circle"></i>
 									</li>
 									<li>
-										<span>About Us</span>
+										<span>Term & Conditions</span>
 									</li>
 								</ul>
 							</div>
 							<!-- END PAGE BAR -->
 							<!-- BEGIN PAGE TITLE-->
-							<h3 class="page-title">About Us
+							<h3 class="page-title">Term & Conditions
                         
 								<small></small>
 							</h3>
@@ -87,7 +87,7 @@ $body =$_POST['body'];
 										<div class="portlet-title">
 											<div class="caption">
 												<i class="icon-home font-dark"></i>
-												<span class="caption-subject font-dark sbold uppercase">About Us</span>
+												<span class="caption-subject font-dark sbold uppercase">Term & Conditions</span>
 											</div>
 										</div>
 										<div class="portlet-body">
@@ -116,7 +116,7 @@ $body =$_POST['body'];
 													</div>
 
 													<?php
-												while($fetch_details = mysqli_fetch_array($about_id))
+												while($fetch_details = mysqli_fetch_array($term_id))
 												{
 											?>
 
@@ -154,7 +154,7 @@ $body =$_POST['body'];
 													<div class="form-actions">
 														<div class="row">
 															<div class="col-md-offset-3 col-md-3">
-																<input type="submit" class="btn green" name="submit_category" value="Update About">
+																<input type="submit" class="btn green" name="submit_category" value="Update Terms">
 																</div>
 															</div>
 														</div>
